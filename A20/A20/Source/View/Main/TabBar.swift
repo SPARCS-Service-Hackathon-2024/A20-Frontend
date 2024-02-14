@@ -14,12 +14,18 @@ struct TabBar: View {
     
     @State private var selectedTab = 0
     
+    @Binding var isLogin: Bool
+    
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    
+//    @StateObject var loginViewModel: LoginViewModel = LoginViewModel(registDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""), loginDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""))
+    
     var body: some View {
         NavigationView {
             ZStack {
                 TabView(selection: $selectedTab) {
                     AroundView()
-                    //                    .environmentObject(loginViewModel)
+                        .environmentObject(loginViewModel)
                         .tabItem {
                             Label {
                                 Text("주변")
@@ -39,7 +45,7 @@ struct TabBar: View {
                         .tag(0)
                     
                     CommunityView()
-                    //                    .environmentObject(loginViewModel)
+                        .environmentObject(loginViewModel)
                         .tabItem {
                             Label {
                                 Text("커뮤니티")
@@ -59,7 +65,7 @@ struct TabBar: View {
                         .tag(1)
                     
                     ChatBotView()
-                    //                    .environmentObject(loginViewModel)
+                        .environmentObject(loginViewModel)
                         .tabItem {
                             Label {
                                 Text("챗봇")
@@ -70,16 +76,16 @@ struct TabBar: View {
                                     .kerning(0.1)
                             } icon: {
                                 if selectedTab == 2 {
-                                    //                                    Image("ChatbotOn")
+                                    Image("ChatbotOn")
                                 } else {
-                                    //                                    Image("ChatbotOff")
+                                    Image("ChatbotOff")
                                 }
                             }
                         }
                         .tag(2)
                     
                     MyPageView()
-                    //                    .environmentObject(loginViewModel)
+                        .environmentObject(loginViewModel)
                         .tabItem {
                             Label {
                                 Text("마이페이지")
@@ -90,7 +96,7 @@ struct TabBar: View {
                                     .kerning(0.1)
                             } icon: {
                                 if selectedTab == 3 {
-                                    //                                    Image("MypageOn")
+                                    Image("MypageOn")
                                 } else {
                                     Image("MypageOff")
                                 }
@@ -100,8 +106,10 @@ struct TabBar: View {
                 }
                 .accentColor(.mainColor)
                 
-                //            LoginView()
-                //                .environmentObject(loginViewModel)
+//                if next {
+//                    Start()
+//                        .environmentObject(loginViewModel)
+//                }
                 
                 if !showMainView {
                     splash
@@ -128,6 +136,6 @@ extension TabBar {
     }
 }
 
-#Preview {
-    TabBar()
-}
+//#Preview {
+//    TabBar()
+//}
