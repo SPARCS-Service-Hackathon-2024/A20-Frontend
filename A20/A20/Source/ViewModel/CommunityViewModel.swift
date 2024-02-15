@@ -11,7 +11,7 @@ fileprivate let writeURLString: String = "https://test.hackathon.sparcs.net/post
 
 //@MainActor // or Task (Main Thread)
 class CommunityViewModel: ObservableObject {
-    @Published var post: Posts
+    @Published var posts: Posts
 //    @Published var clickPost: ClickPost
     @Published var writePost: WritePost
     
@@ -31,17 +31,19 @@ class CommunityViewModel: ObservableObject {
     @Published var email: String = ""
     
     init(postDataString: Posts/*, clickDataString: ClickPost*/, writeDataString: WritePost) {
-        self.post = postDataString
+        self.posts = postDataString
 //        self.clickPost = clickDataString
         self.writePost = writeDataString
     }
     
-    var districtURLString: String = "https://test.hackathon.sparcs.net/posts/:district"
-    var tagURLString = "https://test.hackathon.sparcs.net/posts/:tag"
-//    var clickURLString = "https://test.hackathon.sparcs.net/posts/:postId"
+    var districtURLString: String = "https://test.hackathon.sparcs.net/posts/district/:district"
+    var tagURLString = "https://test.hackathon.sparcs.net/posts/tag/:tag"
+//    var clickURLString = "https://test.hackathon.sparcs.net/posts/postId"
     
     func districtPost() async throws -> Void {
-        districtURLString = "https://test.hackathon.sparcs.net/posts/:\(self.communityDistrict)"
+        districtURLString = "https://test.hackathon.sparcs.net/posts/district/\(self.communityDistrict)"
+        
+        print(districtURLString)
         
         // URL
         guard let districtURL = URL(string: districtURLString) else {
@@ -57,19 +59,21 @@ class CommunityViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: districtRequest)
         
         // Decoding
-//        print("DEBUG: \(String(data: data, encoding: .utf8))")
+        print("DEBUG: \(String(data: data, encoding: .utf8))")
         let decodedData = try JSONDecoder().decode(Posts.self, from: data)
         
         // Task (Main Thread)
         DispatchQueue.main.async {
-            self.post = decodedData
+            self.posts = decodedData
         }
         
         return
     }
     
     func tagPost() async throws -> Void {
-        tagURLString = "https://test.hackathon.sparcs.net/posts/:\(self.communityTag)"
+        tagURLString = "https://test.hackathon.sparcs.net/posts/tag/\(self.communityTag)"
+        
+        print(tagURLString)
         
         // URL
         guard let tagURL = URL(string: tagURLString) else {
@@ -78,26 +82,26 @@ class CommunityViewModel: ObservableObject {
         
         // Request
         var tagRequest = URLRequest(url: tagURL)
-        tagRequest.httpMethod = "POST"
+        tagRequest.httpMethod = "GET"
         tagRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         // Session
         let (data, _) = try await URLSession.shared.data(for: tagRequest)
         
         // Struct로 디코딩
-//        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
+        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
         let decodedContextData = try JSONDecoder().decode(Posts.self, from: data)
         
         // Task (Main Thread)
         DispatchQueue.main.async {
-            self.post = decodedContextData
+            self.posts = decodedContextData
         }
         
         return
     }
     
 //    func clickPost() async throws -> Void {
-//        clickURLString = "https://test.hackathon.sparcs.net/posts/:\(self.postId)"
+//        clickURLString = "https://test.hackathon.sparcs.net/posts/\(self.postId)"
 //        
 //        // URL
 //        guard let clickURL = URL(string: clickURLString) else {

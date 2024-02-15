@@ -12,7 +12,7 @@ struct MyParking: View {
         ZStack {
             Rectangle()
                 .frame(width: 104, height: 40)
-                .cornerRadius(12)
+                .cornerRadius(20)
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
             HStack(spacing: 5) {
@@ -22,6 +22,7 @@ struct MyParking: View {
                 Text("내 주차장")
                     .frame(width: 52, height: 24)
                     .font(Font.custom("PretendardVariable", size: 12))
+                    .foregroundColor(.black)
             }
         }
     }

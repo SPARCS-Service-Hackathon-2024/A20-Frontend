@@ -10,12 +10,19 @@ import SwiftUI
 struct WriteView: View {
     @State private var writeContent: String = ""
     @State private var writeTitle: String = ""
+    @State private var tag: Bool = false
+//    @State private var nine:
+//    @State private var dong:
     
     @State private var showImageSheet: Bool = false
     @State private var image = UIImage()
     
     @State private var selectedImages: [UIImage] = []
     @State private var isImagePickerPresented: Bool = false
+    
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    @EnvironmentObject var communityViewModel: CommunityViewModel
+    
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -183,7 +190,31 @@ struct WriteView: View {
 //            }
             //            .toolbarBackground(Color.white, for: .navigationBar)
             .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: BackButton())
+            .navigationBarItems(leading: BackButton(), trailing:
+                                    Button {
+                communityViewModel.token = loginViewModel.token
+                communityViewModel.email = loginViewModel.email
+                communityViewModel.title = self.writeTitle
+                communityViewModel.content = self.writeContent
+//                communityViewModel.nine = self.
+//                communityViewModel.dong = self.
+//                communityViewModel.tag = self.tag ? "신고" : "피드백"
+                
+                Task {
+                    do {
+                        try await communityViewModel.writePost()
+                    } catch {
+                        print("Error fetching data: \(error)")
+                    }
+                }
+                                    } label: {
+                                        Text("저장하기")
+                                          .font(
+                                            Font.custom("PretendardVariable", size: 16)
+                                              .weight(.bold)
+                                          )
+                                          .foregroundColor(Color(red: 0.12, green: 0.14, blue: 0.17))
+                                    })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {

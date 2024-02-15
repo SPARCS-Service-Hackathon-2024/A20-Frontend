@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct PostElement: Codable/*, Hashable */{
+struct PostElement: Codable {
     var id: String
-    var userName: String
     var title: String
     var content: String
     var district: String
     var area: String
-    var tag: String
     var imageUrl: String? // MARK: String or Int ? (null 값 처리)
+    var tag: String
     var userId: String
+    var userName: String
 }

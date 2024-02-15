@@ -12,7 +12,7 @@ struct CommunityView: View {
     
     @State private var searchText: String = ""
     
-    @StateObject var communityViewModel: CommunityViewModel = CommunityViewModel(postDataString: Posts(posts: [PostElement(id: "", userName: "", title: "", content: "", district: "", area: "", tag: "", userId: "")]), writeDataString: WritePost(newPost: PostElement(id: "", userName: "", title: "", content: "", district: "", area: "", tag: "", userId: "")))
+    @StateObject var communityViewModel: CommunityViewModel = CommunityViewModel(postDataString: Posts(posts: [PostElement(id: "", title: "", content: "", district: "", area: "", imageUrl: "", tag: "", userId: "", userName: "")]), writeDataString: WritePost(newPost: PostElement(id: "", title: "", content: "", district: "", area: "", imageUrl: "", tag: "", userId: "", userName: "")))
     
     var body: some View {
         NavigationStack {
@@ -45,7 +45,7 @@ struct CommunityView: View {
             if index == 1 {
                 ScrollView(showsIndicators: false) {
                     LazyVStack {
-                        ForEach(0..<communityViewModel.post.posts.count, id: \.self) { index in
+                        ForEach(0..<communityViewModel.posts.posts.count, id: \.self) { index in
                             VStack {
                                 HStack {
                                     ZStack {
@@ -78,14 +78,14 @@ struct CommunityView: View {
                                     }
                                     .padding(.trailing, 20)
                                     VStack(alignment: .leading) {
-                                        Text("홍길동")
-//                                        Text("\(communityViewModel.tagPost.posts[index].name)")
+                                        Text("\(communityViewModel.posts.posts[index]!.userName)")
                                             .font(Font.custom("PretendardVariable", size: 15))
                                     }
                                     Spacer()
                                 }
                                 HStack {
-                                    Text("\(communityViewModel.post.posts[index].title)")
+                                    Text("제목")
+//                                    Text("\(communityViewModel.posts.posts[index].title)")
                                         .font(
                                             Font.custom("PretendardVariable", size: 15)
                                                 .weight(.semibold)
@@ -98,7 +98,8 @@ struct CommunityView: View {
                                 HStack {
                                     Image("Location")
                                         .frame(width: 25, height: 25)
-                                    Text("대전시 \(communityViewModel.post.posts[index].district) \(communityViewModel.post.posts[index].area)")
+                                    Text("대전시 중구")
+//                                    Text("대전시 \(communityViewModel.posts.posts[index].district) \(communityViewModel.posts.posts[index].area)")
                                         .font(Font.custom("PretendardVariable", size: 14))
                                         .foregroundColor(Color(red: 0.37, green: 0.37, blue: 0.37))
                                     Spacer()
@@ -106,7 +107,8 @@ struct CommunityView: View {
                                 .padding(.bottom, 15)
                                 
                                 HStack {
-                                    Text("\(communityViewModel.post.posts[index].content)")
+                                    Text("content")
+//                                    Text("\(communityViewModel.posts.posts[index].content)")
                                         .multilineTextAlignment(.leading)
                                     Spacer()
                                 }
@@ -192,10 +194,9 @@ struct CommunityView: View {
                     }
                 }
             } else {
-                
                 ScrollView(showsIndicators: false) {
                     LazyVStack {
-                        ForEach(0..<communityViewModel.post.posts.count, id: \.self) { index in
+                        ForEach(0..<communityViewModel.posts.posts.count, id: \.self) { index in
                             VStack {
                                 HStack {
                                     ZStack {
@@ -229,7 +230,7 @@ struct CommunityView: View {
                                     .padding(.trailing, 20)
                                     VStack(alignment: .leading) {
                                         Text("홍길동")
-//                                        Text("\(communityViewModel.tagPost.posts[index].name)")
+//                                        Text("\(communityViewModel.posts.posts[index].userName)")
                                             .font(Font.custom("PretendardVariable", size: 15))
                                     }
                                     Spacer()
@@ -237,7 +238,8 @@ struct CommunityView: View {
                                 .padding(.bottom, 20)
                                 
                                 HStack {
-                                    Text("\(communityViewModel.post.posts[index].content)")
+                                    Text("Content")
+//                                    Text("\(communityViewModel.posts.posts[index].content)")
                                         .font(Font.custom("Pretendard Variable", size: 15))
                                         .multilineTextAlignment(.leading)
                                     Spacer()

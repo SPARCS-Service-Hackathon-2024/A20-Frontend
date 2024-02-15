@@ -12,7 +12,7 @@ struct ParkingShare: View {
         ZStack {
             Rectangle()
                 .frame(width: 156, height: 40)
-                .cornerRadius(12)
+                .cornerRadius(20)
                 .foregroundColor(.white)
                 .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 4)
             HStack(spacing: 5) {
@@ -20,8 +20,9 @@ struct ParkingShare: View {
                     .resizable()
                     .frame(width: 24, height: 24)
                 Text("내 주차장 공유하기")
-                  .font(Font.custom("PretendardVariable", size: 12))
+                    .font(Font.custom("PretendardVariable", size: 12))
                     .frame(width: 102, height: 24)
+                    .foregroundColor(.black)
             }
         }
     }
