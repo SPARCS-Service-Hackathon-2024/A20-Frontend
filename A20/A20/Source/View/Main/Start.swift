@@ -10,6 +10,8 @@ import SwiftUI
 struct Start: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     
+    @Binding var isLogin: Bool
+    
     var body: some View {
         NavigationStack {
                 VStack {
@@ -39,9 +41,10 @@ struct Start: View {
                         )
                         .multilineTextAlignment(.center)
                         .foregroundColor(.black)
+                        .padding(.bottom, 75)
                     
                     NavigationLink {
-                        Login()
+                        Login(isLogin: $isLogin)
                             .environmentObject(loginViewModel)
                     } label: {
                         ZStack {
@@ -59,9 +62,10 @@ struct Start: View {
                                 .foregroundColor(.white)
                         }
                     }
+                    .padding(.bottom, 15)
                     
                     NavigationLink {
-                        Regist()
+                        Regist(isLogin: $isLogin)
                             .environmentObject(loginViewModel)
                     } label: {
                         ZStack {

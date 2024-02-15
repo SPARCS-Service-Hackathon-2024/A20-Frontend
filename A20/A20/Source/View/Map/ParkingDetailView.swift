@@ -9,7 +9,22 @@ import SwiftUI
 
 struct ParkingDetailView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            
+        }
+//        .toolbarBackground(Color.white, for: .navigationBar)
+//        .navigationBarBackButtonHidden(true)
+//        .navigationBarItems(leading: BackButton())
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("주차장 상세")
+                    .font(
+                        Font.custom("Pretendard", size: 16)
+                            .weight(.bold)
+                    )
+            }
+        }
     }
 }
 

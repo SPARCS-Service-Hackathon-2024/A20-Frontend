@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-//import Foundation
 
 fileprivate let registURLString: String = "http://{SERVER_URL}/auth/register"
 fileprivate let loginURLString: String = "http://{SERVER_URL}/auth/login"
@@ -40,6 +39,7 @@ class LoginViewModel: ObservableObject {
         registRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         registRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
         
+        // Body
         let RequestBody = ["name": self.name, "email": self.email, "password": self.password]
         registRequest.httpBody = try? JSONSerialization.data(withJSONObject: RequestBody, options: [])
         
@@ -47,7 +47,7 @@ class LoginViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: registRequest)
         
         // Struct로 디코딩
-        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
+//        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
         let decodedContextData = try JSONDecoder().decode(LoginResponse.self, from: data)
         
         // Task (Main Thread)
@@ -70,6 +70,7 @@ class LoginViewModel: ObservableObject {
         loginRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         loginRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
         
+        // Body
         let RequestBody = ["email": self.email, "password": self.password]
         loginRequest.httpBody = try? JSONSerialization.data(withJSONObject: RequestBody, options: [])
         
@@ -77,7 +78,7 @@ class LoginViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: loginRequest)
         
         // Struct로 디코딩
-        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
+//        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
         let decodedContextData = try JSONDecoder().decode(LoginResponse.self, from: data)
         
         // Task (Main Thread)
@@ -88,4 +89,3 @@ class LoginViewModel: ObservableObject {
         return
     }
 }
-

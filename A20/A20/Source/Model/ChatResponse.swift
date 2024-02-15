@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct ChatResponse: Codable {
+    var answer: String
+}

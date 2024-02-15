@@ -17,10 +17,14 @@ struct Regist: View {
     @State private var success: Bool = false
     @State private var onBoard: Bool = false
     
+    @State private var alreadyLogin: Bool = false
+    
+    @Binding var isLogin: Bool
+    
     var body: some View {
         NavigationStack {
             VStack {
-                Text("회원가입을 위해 작성해주세요!")
+                Text("회원가입을 위해\n작성해주세요!")
                   .font(
                     Font.custom("Pretendard", size: 30)
                       .weight(.bold)
@@ -100,10 +104,34 @@ struct Regist: View {
                     }
                 }
                 .padding(.top, 32)
+                .padding(.bottom, 200)
+                
+                Text("이미 회원이신가요?")
+                  .font(Font.custom("Pretendard", size: 15))
+                  .kerning(0.15)
+                  .multilineTextAlignment(.center)
+                  .foregroundColor(.black)
+                
+                Button {
+                    alreadyLogin = true
+                } label: {
+                    Text("로그인하러가기")
+                      .font(
+                        Font.custom("Pretendard", size: 15)
+                          .weight(.semibold)
+                      )
+                      .kerning(0.15)
+                      .multilineTextAlignment(.center)
+                      .foregroundColor(.black)
+                }
             }
         }
+        .navigationDestination(isPresented: $alreadyLogin, destination: {
+            Login(isLogin: $isLogin)
+                .environmentObject(loginViewModel)
+        })
         .navigationDestination(isPresented: $onBoard, destination: {
-           OnBoarding()
+            OnBoarding(isLogin: $isLogin)
                 .environmentObject(loginViewModel)
         })
         //            .toolbarBackground(Color.white, for: .navigationBar)

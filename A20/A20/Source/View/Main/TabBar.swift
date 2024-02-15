@@ -18,8 +18,6 @@ struct TabBar: View {
     
     @EnvironmentObject var loginViewModel: LoginViewModel
     
-//    @StateObject var loginViewModel: LoginViewModel = LoginViewModel(registDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""), loginDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""))
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -76,9 +74,9 @@ struct TabBar: View {
                                     .kerning(0.1)
                             } icon: {
                                 if selectedTab == 2 {
-                                    Image("ChatbotOn")
+                                    Image("ChatBotOn")
                                 } else {
-                                    Image("ChatbotOff")
+//                                    Image("ChatBotOff")
                                 }
                             }
                         }
@@ -106,8 +104,9 @@ struct TabBar: View {
                 }
                 .accentColor(.mainColor)
                 
-//                if next {
-//                    Start()
+                // MARK: 로그인 기능 구현 전까지 disabled
+//                if !isLogin {
+//                    Start(isLogin: $isLogin)
 //                        .environmentObject(loginViewModel)
 //                }
                 

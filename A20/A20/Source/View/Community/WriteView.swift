@@ -11,6 +11,12 @@ struct WriteView: View {
     @State private var writeContent: String = ""
     @State private var writeTitle: String = ""
     
+    @State private var showImageSheet: Bool = false
+    @State private var image = UIImage()
+    
+    @State private var selectedImages: [UIImage] = []
+    @State private var isImagePickerPresented: Bool = false
+    
     init() {
         UITextView.appearance().backgroundColor = .clear
     }
@@ -27,7 +33,6 @@ struct WriteView: View {
                       .foregroundColor(.black)
                     Spacer()
                 }
-                
                 
                 HStack {
                     Text("사진")
@@ -46,29 +51,87 @@ struct WriteView: View {
                             .frame(width: 331, height: 80)
                             .background(Color(red: 0.92, green: 0.92, blue: 0.92))
                             .cornerRadius(8)
-                    HStack {
-                            ZStack {
-                                Rectangle()
-                                    .frame(width: 58, height: 58)
-                                    .foregroundColor(.text)
-                                    .cornerRadius(12)
-                                Image("camera")
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            Button {
+                                isImagePickerPresented.toggle()
+                            } label: {
+                                ZStack {                  Rectangle()
+                                        .frame(width: 58, height: 58)
+                                        .foregroundColor(.text)
+                                        .cornerRadius(12)
+                                    Image("camera")
+                                }
+                                .padding(10)
                             }
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("TIP")
-                                    .font(
-                                        Font.custom("Pretendard Variable", size: 14)
-                                            .weight(.medium)
-                                    )
-                                    .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
-                                Text("최대 10장까지 첨부가 가능해요!")
-                                    .font(
-                                        Font.custom("Pretendard Variable", size: 12)
-                                            .weight(.medium)
-                                    )
-                                    .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
+                            .sheet(isPresented: $isImagePickerPresented) {
+                                ImagePicker(selectedImages: $selectedImages, isImagePickerPresented: $isImagePickerPresented)
+                            }
+                            ForEach(selectedImages.indices, id: \.self) { index in
+                                
+                                ZStack {
+                                    Image(uiImage: selectedImages[index])
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 58, height: 58)
+                                    VStack {
+                                        HStack {
+                                            Spacer()
+                                            Button {
+                                                selectedImages.remove(at: index)
+                                            } label: {
+                                                ZStack {
+                                                    Circle()
+                                                        .frame(width: 18, height: 18)
+                                                        .foregroundColor(.white)
+                                                    Image(systemName: "xmark")
+                                                        .resizable()
+                                                        .frame(width: 10, height: 10)
+                                                        .foregroundColor(.black)
+                                                }
+                                            }
+                                        }
+                                        Spacer()
+                                    }
+                                    .frame(width: 58, height: 58)
+                                        
+                                }
                             }
                         }
+                    }
+                    
+//                    Spacer()
+                    
+//                    HStack {
+//                        Button {
+//                            showImageSheet = true
+//                        } label: {
+//                            ZStack {
+//                                Rectangle()
+//                                    .frame(width: 58, height: 58)
+//                                    .foregroundColor(.text)
+//                                    .cornerRadius(12)
+//                                Image("camera")
+//                            }
+//                            .padding(10)
+//                        }
+//                            VStack(alignment: .leading, spacing: 10) {
+//                                Text("TIP")
+//                                    .font(
+//                                        Font.custom("Pretendard Variable", size: 14)
+//                                            .weight(.medium)
+//                                    )
+//                                    .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
+//                                Text("최대 10장까지 첨부가 가능해요!")
+//                                    .font(
+//                                        Font.custom("Pretendard Variable", size: 12)
+//                                            .weight(.medium)
+//                                    )
+//                                    .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
+//                            }
+//                            Spacer()
+//
+//                    }
                 }
                 
                 HStack {
@@ -115,6 +178,9 @@ struct WriteView: View {
                 
             }
             .frame(width: 331)
+//            .sheet(isPresented: $showImageSheet) {
+//                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+//            }
             //            .toolbarBackground(Color.white, for: .navigationBar)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton())
@@ -130,6 +196,7 @@ struct WriteView: View {
             }
         }
     }
+        
 }
 
 #Preview {

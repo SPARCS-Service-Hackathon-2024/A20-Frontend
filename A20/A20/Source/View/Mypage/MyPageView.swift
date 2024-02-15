@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MyPageView: View {
-//    @EnvironmentObject var login:
-    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -22,7 +20,7 @@ struct MyPageView: View {
                                 Text("")
                             }
                         } header: {
-                            Text("MyPageView")
+                            Text("MyPageView_Demo")
                         }
                     }
                 }

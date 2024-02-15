@@ -8,8 +8,10 @@
 		<false/>
 	</dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Description</string>
+	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Description</string>
+	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string></string>
 </dict>
 </plist>

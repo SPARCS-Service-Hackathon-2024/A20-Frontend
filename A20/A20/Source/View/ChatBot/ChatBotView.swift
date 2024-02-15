@@ -50,9 +50,14 @@ struct ChatBotView: View {
                     Button {
                         
                     } label: {
-                        Image("OnSubmit")
-                            .resizable()
-                            .frame(width: 36, height: 36, alignment: .center)
+                        ZStack {
+                            Circle()
+                                .foregroundColor(.mainColor)
+                                .frame(width: 36, height: 36, alignment: .center)
+                            Image(systemName: "arrow.right")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
                     }
                 }
                 .padding(.horizontal, 16)
