@@ -6,7 +6,7 @@
 //
 
 import Foundation
-// Login 과 Regist에 공통으로 통일하여 사용하는 struct 모델입니다.
+
 struct LoginResponse: Codable {
     var user: User
     var token: String

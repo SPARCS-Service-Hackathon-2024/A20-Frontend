@@ -27,7 +27,7 @@ struct WriteView: View {
                 HStack {
                     Text("신고 목적")
                       .font(
-                        Font.custom("Pretendard Variable", size: 16)
+                        Font.custom("PretendardVariable", size: 16)
                           .weight(.medium)
                       )
                       .foregroundColor(.black)
@@ -37,7 +37,7 @@ struct WriteView: View {
                 HStack {
                     Text("사진")
                       .font(
-                        Font.custom("Pretendard Variable", size: 16)
+                        Font.custom("PretendardVariable", size: 16)
                           .weight(.medium)
                       )
                       .foregroundColor(.black)
@@ -137,7 +137,7 @@ struct WriteView: View {
                 HStack {
                     Text("게시물 작성")
                       .font(
-                        Font.custom("Pretendard Variable", size: 16)
+                        Font.custom("PretendardVariable", size: 16)
                           .weight(.medium)
                       )
                       .foregroundColor(.black)
@@ -189,7 +189,7 @@ struct WriteView: View {
                 ToolbarItem(placement: .principal) {
                     Text("글쓰기")
                         .font(
-                            Font.custom("Pretendard", size: 16)
+                            Font.custom("PretendardVariable", size: 16)
                                 .weight(.bold)
                         )
                 }

@@ -23,7 +23,8 @@ extension Color {
 }
 
 extension Color {
-    static let mainColor = Color(hex: "#575DFB") // main
+    static let mainColor = Color(hex: "#575DFB")
+    static let subColor = Color(hex: "#E2E1FF")
     static let dark = Color(hex: "#1E232C")
     static let border = Color(hex: "#E8ECF4")
     static let gray = Color(hex: "#8391A1")

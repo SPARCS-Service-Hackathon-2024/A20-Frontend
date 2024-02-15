@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-struct MapViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+fileprivate let URLString: String = "https://test.hackathon.sparcs.net/posts/create"
 
-#Preview {
-    MapViewModel()
+//@MainActor // or Task (Main Thread)
+class MapViewModel {
+//    @Published
+    
+    var URLString: String = "http://{SERVER_URL}/posts/:district"
 }

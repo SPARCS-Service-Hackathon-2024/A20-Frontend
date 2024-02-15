@@ -7,11 +7,13 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<false/>
 	</dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
-	<key>NSPhotoLibraryUsageDescription</key>
+	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string></string>
 </dict>
 </plist>

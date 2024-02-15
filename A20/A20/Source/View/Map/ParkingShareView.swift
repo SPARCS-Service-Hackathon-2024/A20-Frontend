@@ -21,7 +21,7 @@ struct ShareView: View {
                 ToolbarItem(placement: .principal) {
                     Text("내 주차장 공유하기")
                         .font(
-                            Font.custom("Pretendard", size: 16)
+                            Font.custom("PretendardVariable", size: 16)
                                 .weight(.bold)
                         )
                 }

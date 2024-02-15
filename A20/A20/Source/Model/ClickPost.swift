@@ -2,7 +2,11 @@
 //  ClickPost.swift
 //  A20
 //
-//  Created by 드즈 on 2/14/24.
+//  Created by 드즈 on 2/15/24.
 //
 
-import Foundation
+//import Foundation
+//
+//struct ClickPost: Codable {
+//    var post: PostElement
+//}

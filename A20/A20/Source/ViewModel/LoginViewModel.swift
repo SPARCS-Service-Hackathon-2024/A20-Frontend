@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-fileprivate let registURLString: String = "http://{SERVER_URL}/auth/register"
-fileprivate let loginURLString: String = "http://{SERVER_URL}/auth/login"
+fileprivate let registURLString: String = "https://test.hackathon.sparcs.net/auth/register"
+fileprivate let loginURLString: String = "https://test.hackathon.sparcs.net/auth/login"
 
 //@MainActor // or Task (Main Thread)
 class LoginViewModel: ObservableObject {
@@ -37,7 +37,6 @@ class LoginViewModel: ObservableObject {
         var registRequest = URLRequest(url: registURL)
         registRequest.httpMethod = "POST"
         registRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        registRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
         
         // Body
         let RequestBody = ["name": self.name, "email": self.email, "password": self.password]
@@ -60,15 +59,14 @@ class LoginViewModel: ObservableObject {
     
     func login() async throws -> Void {
         // URL
-        guard let registURL = URL(string: registURLString) else {
+        guard let registURL = URL(string: loginURLString) else {
             throw DataFetchError.invalidURL
         }
         
         // Request
         var loginRequest = URLRequest(url: registURL)
-        loginRequest.httpMethod = "GET"
+        loginRequest.httpMethod = "POST"
         loginRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        loginRequest.addValue("Bearer \(self.token)", forHTTPHeaderField: "Authorization")
         
         // Body
         let RequestBody = ["email": self.email, "password": self.password]
@@ -78,7 +76,7 @@ class LoginViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: loginRequest)
         
         // Struct로 디코딩
-//        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
+        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
         let decodedContextData = try JSONDecoder().decode(LoginResponse.self, from: data)
         
         // Task (Main Thread)

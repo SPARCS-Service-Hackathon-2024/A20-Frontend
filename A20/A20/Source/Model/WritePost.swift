@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct WritePost: Codable {
+    var newPost: PostElement
+}

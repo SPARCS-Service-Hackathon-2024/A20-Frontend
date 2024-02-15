@@ -28,15 +28,14 @@ struct Start: View {
                     
                     Text("다대슈")
                         .font(
-                            Font.custom("Pretendard", size: 48)
+                            Font.custom("Pretendard-Bold", size: 48)
                                 .weight(.heavy)
                         )
-                        .multilineTextAlignment(.center)
                         .foregroundColor(Color(red: 0.34, green: 0.37, blue: 0.98))
                     
                     Text("주정차 문제 해결 한번에")
                         .font(
-                            Font.custom("Pretendard", size: 17)
+                            Font.custom("PretendardVariable", size: 17)
                                 .weight(.semibold)
                         )
                         .multilineTextAlignment(.center)
@@ -55,7 +54,7 @@ struct Start: View {
                                 .cornerRadius(8)
                             Text("로그인")
                                 .font(
-                                    Font.custom("Urbanist", size: 15)
+                                    Font.custom("PretendardVariable", size: 15)
                                         .weight(.semibold)
                                 )
                                 .multilineTextAlignment(.center)
@@ -81,7 +80,7 @@ struct Start: View {
                                 )
                             Text("회원가입")
                                 .font(
-                                    Font.custom("Urbanist", size: 15)
+                                    Font.custom("PretendardVariable", size: 15)
                                         .weight(.semibold)
                                 )
                                 .multilineTextAlignment(.center)

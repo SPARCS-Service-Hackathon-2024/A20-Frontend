@@ -26,7 +26,7 @@ struct Regist: View {
             VStack {
                 Text("회원가입을 위해\n작성해주세요!")
                   .font(
-                    Font.custom("Pretendard", size: 30)
+                    Font.custom("PretendardVariable", size: 30)
                       .weight(.bold)
                   )
                   .foregroundColor(.black)
@@ -40,7 +40,7 @@ struct Regist: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.98))
                         .cornerRadius(8)
                     TextField("이름을 입력해주세요", text: $name)
-                      .font(Font.custom("Pretendard", size: 15))
+                      .font(Font.custom("PretendardVariable", size: 15))
                       .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
                       .frame(width: 300)
                 }
@@ -52,7 +52,7 @@ struct Regist: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.98))
                         .cornerRadius(8)
                     TextField("이메일을 입력해주세요", text: $email)
-                      .font(Font.custom("Pretendard", size: 15))
+                      .font(Font.custom("PretendardVariable", size: 15))
                       .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
                       .frame(width: 300)
                 }
@@ -64,7 +64,7 @@ struct Regist: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.98))
                         .cornerRadius(8)
                     TextField("비밀번호 입력해주세요", text: $password)
-                      .font(Font.custom("Pretendard", size: 15))
+                      .font(Font.custom("PretendardVariable", size: 15))
                       .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
                       .frame(width: 300)
                 }
@@ -96,7 +96,7 @@ struct Regist: View {
                             .cornerRadius(8)
                         Text("로그인")
                           .font(
-                            Font.custom("Urbanist", size: 15)
+                            Font.custom("PretendardVariable", size: 15)
                               .weight(.semibold)
                           )
                           .multilineTextAlignment(.center)
@@ -107,7 +107,7 @@ struct Regist: View {
                 .padding(.bottom, 200)
                 
                 Text("이미 회원이신가요?")
-                  .font(Font.custom("Pretendard", size: 15))
+                  .font(Font.custom("PretendardVariable", size: 15))
                   .kerning(0.15)
                   .multilineTextAlignment(.center)
                   .foregroundColor(.black)
@@ -117,7 +117,7 @@ struct Regist: View {
                 } label: {
                     Text("로그인하러가기")
                       .font(
-                        Font.custom("Pretendard", size: 15)
+                        Font.custom("PretendardVariable", size: 15)
                           .weight(.semibold)
                       )
                       .kerning(0.15)

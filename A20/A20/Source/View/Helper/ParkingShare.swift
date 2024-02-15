@@ -20,7 +20,7 @@ struct ParkingShare: View {
                     .resizable()
                     .frame(width: 24, height: 24)
                 Text("내 주차장 공유하기")
-                  .font(Font.custom("Pretendard", size: 12))
+                  .font(Font.custom("PretendardVariable", size: 12))
                     .frame(width: 102, height: 24)
             }
         }

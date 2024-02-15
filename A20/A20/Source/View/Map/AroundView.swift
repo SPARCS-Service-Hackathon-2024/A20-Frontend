@@ -17,7 +17,7 @@ struct AroundView: View {
     
     var body: some View {
         NavigationStack {
-            Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: .constant(.follow))
+            Map(coordinateRegion: $region, showsUserLocation: true)
 //        Map(position: $cameraPosition, selection: $mapSelection) {
 ////            Marker("My location", systemImage: "paperplane", coordinate: .userLocation)
 ////                .tint(.blue)

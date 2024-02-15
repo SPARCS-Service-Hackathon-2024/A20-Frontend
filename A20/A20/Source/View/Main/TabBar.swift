@@ -28,7 +28,7 @@ struct TabBar: View {
                             Label {
                                 Text("주변")
                                     .font(
-                                        Font.custom("Pretendard", size: 12)
+                                        Font.custom("PretendardVariable", size: 12)
                                             .weight(.bold)
                                     )
                                     .kerning(0.1)
@@ -48,7 +48,7 @@ struct TabBar: View {
                             Label {
                                 Text("커뮤니티")
                                     .font(
-                                        Font.custom("Pretendard", size: 12)
+                                        Font.custom("PretendardVariable", size: 12)
                                             .weight(.bold)
                                     )
                                     .kerning(0.1)
@@ -62,13 +62,13 @@ struct TabBar: View {
                         }
                         .tag(1)
                     
-                    ChatBotView()
+                    ChatView()
                         .environmentObject(loginViewModel)
                         .tabItem {
                             Label {
                                 Text("챗봇")
                                     .font(
-                                        Font.custom("Pretendard", size: 12)
+                                        Font.custom("PretendardVariable", size: 12)
                                             .weight(.bold)
                                     )
                                     .kerning(0.1)
@@ -76,25 +76,25 @@ struct TabBar: View {
                                 if selectedTab == 2 {
                                     Image("ChatBotOn")
                                 } else {
-//                                    Image("ChatBotOff")
+                                    Image("ChatBotOff")
                                 }
                             }
                         }
                         .tag(2)
                     
-                    MyPageView()
-                        .environmentObject(loginViewModel)
+                    Color.clear
                         .tabItem {
                             Label {
                                 Text("마이페이지")
                                     .font(
-                                        Font.custom("Pretendard", size: 12)
+                                        Font.custom("PretendardVariable", size: 12)
                                             .weight(.bold)
                                     )
                                     .kerning(0.1)
                             } icon: {
                                 if selectedTab == 3 {
-                                    Image("MypageOn")
+                                    Image("MypageOff")
+                                        .foregroundColor(.mainColor)
                                 } else {
                                     Image("MypageOff")
                                 }
@@ -102,13 +102,12 @@ struct TabBar: View {
                         }
                         .tag(3)
                 }
-                .accentColor(.mainColor)
+                .accentColor(selectedTab == 3 ? Color(hex: "#c3c3c3") : .mainColor)
                 
-                // MARK: 로그인 기능 구현 전까지 disabled
-//                if !isLogin {
-//                    Start(isLogin: $isLogin)
-//                        .environmentObject(loginViewModel)
-//                }
+                if !isLogin {
+                    Start(isLogin: $isLogin)
+                        .environmentObject(loginViewModel)
+                }
                 
                 if !showMainView {
                     splash
@@ -130,7 +129,8 @@ struct TabBar: View {
 extension TabBar {
     var splash: some View {
         ZStack {
-            Color.mainColor.ignoresSafeArea()
+            Color.white.ignoresSafeArea()
+            Image("Logo")
         }
     }
 }

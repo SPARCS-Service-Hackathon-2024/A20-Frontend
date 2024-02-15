@@ -9,24 +9,7 @@ import SwiftUI
 
 struct MyPageView: View {
     var body: some View {
-        NavigationStack {
-            ZStack {
-                List {
-                    Group {
-                        Section {
-                            Button {
-                                
-                            } label: {
-                                Text("")
-                            }
-                        } header: {
-                            Text("MyPageView_Demo")
-                        }
-                    }
-                }
-//                .scrollContentBackground(.hidden)
-            }
-        }
+        Text("MyPageView")
     }
 }
 

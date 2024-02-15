@@ -20,7 +20,7 @@ struct OnBoarding: View {
             VStack {
                 Text("차량정보를\n등록해주세요!")
                     .font(
-                        Font.custom("Pretendard", size: 30)
+                        Font.custom("PretendardVariable", size: 30)
                             .weight(.bold)
                     )
                     .foregroundColor(.black)
@@ -33,7 +33,7 @@ struct OnBoarding: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.98))
                         .cornerRadius(8)
                     TextField("차종이 무엇인가요?", text: $carType)
-                        .font(Font.custom("Pretendard", size: 15))
+                        .font(Font.custom("PretendardVariable", size: 15))
                         .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
                         .frame(width: 300)
                 }
@@ -45,7 +45,7 @@ struct OnBoarding: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.98))
                         .cornerRadius(8)
                     TextField("차량번호가 무엇인가요?", text: $carNumber)
-                        .font(Font.custom("Pretendard", size: 15))
+                        .font(Font.custom("PretendardVariable", size: 15))
                         .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
                         .frame(width: 300)
                 }
@@ -61,7 +61,7 @@ struct OnBoarding: View {
                             .cornerRadius(8)
                         Text("다음")
                             .font(
-                                Font.custom("Urbanist", size: 15)
+                                Font.custom("PretendardVariable", size: 15)
                                     .weight(.semibold)
                             )
                             .multilineTextAlignment(.center)
@@ -77,9 +77,9 @@ struct OnBoarding: View {
                         .background(Color(red: 0.92, green: 0.92, blue: 0.92))
                         .cornerRadius(8)
                     VStack {
-                        Text(" 차량번호를 정확히 입력해주세요")
+                        Text("차량번호를 정확히 입력해주세요")
                             .font(
-                                Font.custom("Pretendard Variable", size: 12)
+                                Font.custom("PretendardVariable", size: 12)
                                     .weight(.semibold)
                             )
                             .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
@@ -87,12 +87,13 @@ struct OnBoarding: View {
                         
                         Text(" 임시번호판 차량은 이용이 불가합니다.")
                             .font(
-                                Font.custom("Pretendard Variable", size: 12)
+                                Font.custom("PretendardVariable", size: 12)
                                     .weight(.semibold)
                             )
                             .foregroundColor(.mainColor)
                     }
                 }
+                .padding(.top, 32)
             }
             //        .toolbarBackground(Color.white, for: .navigationBar)
             .navigationBarBackButtonHidden(true)
@@ -103,7 +104,7 @@ struct OnBoarding: View {
             } label: {
                 Text("SKIP")
                     .font(
-                        Font.custom("Pretendard", size: 15)
+                        Font.custom("PretendardVariable", size: 15)
                             .weight(.semibold)
                     )
                     .kerning(0.15)
@@ -116,7 +117,7 @@ struct OnBoarding: View {
                 ToolbarItem(placement: .principal) {
                     Text("커뮤니티")
                         .font(
-                            Font.custom("Pretendard", size: 16)
+                            Font.custom("PretendardVariable", size: 16)
                                 .weight(.bold)
                         )
                 }

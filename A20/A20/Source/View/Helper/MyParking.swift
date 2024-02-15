@@ -21,7 +21,7 @@ struct MyParking: View {
                     .frame(width: 24, height: 24)
                 Text("내 주차장")
                     .frame(width: 52, height: 24)
-                    .font(Font.custom("Pretendard", size: 12))
+                    .font(Font.custom("PretendardVariable", size: 12))
             }
         }
     }

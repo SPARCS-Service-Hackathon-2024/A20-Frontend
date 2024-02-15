@@ -25,7 +25,7 @@ struct Login: View {
             VStack {
                 Text("환영해요!\n로그인해주세요")
                     .font(
-                        Font.custom("Pretendard", size: 30)
+                        Font.custom("PretendardVariable", size: 30)
                             .weight(.bold)
                     )
                     .foregroundColor(.black)
@@ -39,7 +39,7 @@ struct Login: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.98))
                         .cornerRadius(8)
                     TextField("이메일을 입력해주세요", text: $email)
-                        .font(Font.custom("Pretendard", size: 15))
+                        .font(Font.custom("PretendardVariable", size: 15))
                         .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
                         .frame(width: 300)
                 }
@@ -51,7 +51,7 @@ struct Login: View {
                         .background(Color(red: 0.97, green: 0.97, blue: 0.98))
                         .cornerRadius(8)
                     TextField("비밀번호 입력해주세요", text: $password)
-                        .font(Font.custom("Pretendard", size: 15))
+                        .font(Font.custom("PretendardVariable", size: 15))
                         .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
                         .frame(width: 300)
                 }
@@ -64,13 +64,12 @@ struct Login: View {
                         Task {
                             do {
                                 try await loginViewModel.login()
+                                if !loginViewModel.login.token.isEmpty {
+                                    onBoard = true
+                                }
                             } catch {
                                 print("Error fetching data: \(error)")
                             }
-                        }
-                        // MARK: 로그인 완료시 처리할 동작 추가 필요 (온보딩 뷰 동작)
-                        if success {
-                            onBoard = true
                         }
                     }
                 } label: {
@@ -82,7 +81,7 @@ struct Login: View {
                             .cornerRadius(8)
                         Text("로그인")
                             .font(
-                                Font.custom("Urbanist", size: 15)
+                                Font.custom("PretendardVariable", size: 15)
                                     .weight(.semibold)
                             )
                             .multilineTextAlignment(.center)
@@ -93,7 +92,7 @@ struct Login: View {
                 .padding(.bottom, 225)
                 
                 Text("회원이 아니신가요?")
-                  .font(Font.custom("Pretendard", size: 15))
+                  .font(Font.custom("PretendardVariable", size: 15))
                   .kerning(0.15)
                   .multilineTextAlignment(.center)
                   .foregroundColor(.black)
