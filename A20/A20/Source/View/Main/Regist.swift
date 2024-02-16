@@ -78,13 +78,10 @@ struct Regist: View {
                         Task {
                             do {
                                 try await loginViewModel.regist()
+                                onBoard = true
                             } catch {
                                 print("Error fetching data: \(error)")
                             }
-                        }
-                        // MARK: 로그인 완료시 처리할 동작 추가 필요 (온보딩 뷰 동작)
-                        if success {
-                            onBoard = true
                         }
                     }
                 } label: {

@@ -46,7 +46,7 @@ class MapViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: Request)
         
         // Decoding
-        print("DEBUG: \(String(data: data, encoding: .utf8))")
+//        print("DEBUG: \(String(data: data, encoding: .utf8))")
         let decodedData = try JSONDecoder().decode(ParkingInfo.self, from: data)
         
         // Task (Main Thread)
@@ -76,7 +76,7 @@ class MapViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: Request)
         
         // Decoding
-        print("DEBUG: \(String(data: data, encoding: .utf8))")
+//        print("DEBUG: \(String(data: data, encoding: .utf8))")
         let decodedData = try JSONDecoder().decode(ParkingDetail.self, from: data)
         
         // Task (Main Thread)

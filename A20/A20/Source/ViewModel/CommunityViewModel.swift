@@ -59,7 +59,7 @@ class CommunityViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: districtRequest)
         
         // Decoding
-        print("DEBUG: \(String(data: data, encoding: .utf8))")
+//        print("DEBUG: \(String(data: data, encoding: .utf8))")
         let decodedData = try JSONDecoder().decode(Posts.self, from: data)
         
         // Task (Main Thread)
@@ -89,7 +89,7 @@ class CommunityViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: tagRequest)
         
         // Struct로 디코딩
-        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
+//        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
         let decodedContextData = try JSONDecoder().decode(Posts.self, from: data)
         
         // Task (Main Thread)

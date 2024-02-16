@@ -13,9 +13,9 @@ struct ParkingInfoElement: Codable {
     var id: String
     var isShared: String
     
-    enum CodingKeys: String, CodingKey {
-        case id, lat, lon, isShared
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case id, lat, lon, isShared
+//    }
 }
 
 typealias ParkingInfo = [ParkingInfoElement]

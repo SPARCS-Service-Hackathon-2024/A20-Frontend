@@ -44,25 +44,55 @@ struct WriteView: View {
                     Spacer()
                 }
                 
-                HStack(spacing: 10) {
-                    TextField("00", text: $texts)
-                        .font(Font.custom("Pretendard Variable", size: 16))
-                        .lineSpacing(16)
-                        .foregroundColor(.black)
-                    Text("분")
-                        .font(Font.custom("Pretendard Variable", size: 16))
-                        .lineSpacing(16)
-                        .foregroundColor(Color(red: 0.07, green: 0.07, blue: 0.07))
+                HStack {
+                    HStack(spacing: 10) {
+                        TextField("신고 / 피드백", text: $texts)
+                            .font(Font.custom("Pretendard Variable", size: 16))
+                            .lineSpacing(16)
+                            .foregroundColor(.black)
+                    }
+                    .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
+                    .frame(width: 124, height: 40)
+                    .background(.white)
+                    .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .inset(by: 0.50)
+                            .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
+                    )
+                    
+                    HStack(spacing: 10) {
+                        TextField("구", text: $texts)
+                            .font(Font.custom("Pretendard Variable", size: 16))
+                            .lineSpacing(16)
+                            .foregroundColor(.black)
+                    }
+                    .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
+                    .frame(width: 84, height: 40)
+                    .background(.white)
+                    .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .inset(by: 0.50)
+                            .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
+                    )
+                    
+                    HStack(spacing: 10) {
+                        TextField("동", text: $texts)
+                            .font(Font.custom("Pretendard Variable", size: 16))
+                            .lineSpacing(16)
+                            .foregroundColor(.black)
+                    }
+                    .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
+                    .frame(width: 84, height: 40)
+                    .background(.white)
+                    .cornerRadius(8)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .inset(by: 0.50)
+                            .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
+                    )
                 }
-                .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
-                .frame(width: 124, height: 40)
-                .background(.white)
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .inset(by: 0.50)
-                        .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
-                )
                 
                 HStack {
                     Text("사진")

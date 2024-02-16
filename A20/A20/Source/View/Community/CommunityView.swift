@@ -99,7 +99,7 @@ struct CommunityView: View {
                                     Image("Location")
                                         .frame(width: 25, height: 25)
 //                                    Text("대전시 중구")
-                                    Text("대전시"  + "\(communityViewModel.posts.posts[index].district)" +  "\(communityViewModel.posts.posts[index].area)")
+                                    Text("대전시 \(communityViewModel.posts.posts[index].district) \(communityViewModel.posts.posts[index].area)")
                                         .font(Font.custom("PretendardVariable", size: 14))
                                         .foregroundColor(Color(red: 0.37, green: 0.37, blue: 0.37))
                                     Spacer()
@@ -200,13 +200,7 @@ struct CommunityView: View {
                             VStack {
                                 HStack {
                                     ZStack {
-                                        Circle()
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 50, height: 50)
-                                            .clipped()
-                                            .cornerRadius(113.94936)
-                                            .foregroundColor(.black)
+                                       
     //                                    VStack {
     //                                        Spacer()
     //                                        HStack {

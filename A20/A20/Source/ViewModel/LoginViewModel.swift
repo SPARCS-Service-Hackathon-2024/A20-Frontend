@@ -76,7 +76,7 @@ class LoginViewModel: ObservableObject {
         let (data, _) = try await URLSession.shared.data(for: loginRequest)
         
         // Struct로 디코딩
-        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
+//        print("DEBUG: \(String(data: data, encoding: .utf8)/*!*/)")
         let decodedContextData = try JSONDecoder().decode(LoginResponse.self, from: data)
         
         // Task (Main Thread)
