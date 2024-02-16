@@ -78,14 +78,14 @@ struct CommunityView: View {
                                     }
                                     .padding(.trailing, 20)
                                     VStack(alignment: .leading) {
-                                        Text("\(communityViewModel.posts.posts[index]!.userName)")
+                                        Text("\(communityViewModel.posts.posts[index].userName)")
                                             .font(Font.custom("PretendardVariable", size: 15))
                                     }
                                     Spacer()
                                 }
                                 HStack {
-                                    Text("제목")
-//                                    Text("\(communityViewModel.posts.posts[index].title)")
+//                                    Text("제목")
+                                    Text("\(communityViewModel.posts.posts[index].title)")
                                         .font(
                                             Font.custom("PretendardVariable", size: 15)
                                                 .weight(.semibold)
@@ -98,8 +98,8 @@ struct CommunityView: View {
                                 HStack {
                                     Image("Location")
                                         .frame(width: 25, height: 25)
-                                    Text("대전시 중구")
-//                                    Text("대전시 \(communityViewModel.posts.posts[index].district) \(communityViewModel.posts.posts[index].area)")
+//                                    Text("대전시 중구")
+                                    Text("대전시"  + "\(communityViewModel.posts.posts[index].district)" +  "\(communityViewModel.posts.posts[index].area)")
                                         .font(Font.custom("PretendardVariable", size: 14))
                                         .foregroundColor(Color(red: 0.37, green: 0.37, blue: 0.37))
                                     Spacer()
@@ -107,8 +107,8 @@ struct CommunityView: View {
                                 .padding(.bottom, 15)
                                 
                                 HStack {
-                                    Text("content")
-//                                    Text("\(communityViewModel.posts.posts[index].content)")
+//                                    Text("content")
+                                    Text("\(communityViewModel.posts.posts[index].content)")
                                         .multilineTextAlignment(.leading)
                                     Spacer()
                                 }
@@ -200,12 +200,13 @@ struct CommunityView: View {
                             VStack {
                                 HStack {
                                     ZStack {
-                                        Image("OnSubmit")
+                                        Circle()
                                             .resizable()
                                             .aspectRatio(contentMode: .fill)
                                             .frame(width: 50, height: 50)
                                             .clipped()
                                             .cornerRadius(113.94936)
+                                            .foregroundColor(.black)
     //                                    VStack {
     //                                        Spacer()
     //                                        HStack {
@@ -229,8 +230,8 @@ struct CommunityView: View {
                                     }
                                     .padding(.trailing, 20)
                                     VStack(alignment: .leading) {
-                                        Text("홍길동")
-//                                        Text("\(communityViewModel.posts.posts[index].userName)")
+//                                        Text("홍길동")
+                                        Text("\(communityViewModel.posts.posts[index].userName)")
                                             .font(Font.custom("PretendardVariable", size: 15))
                                     }
                                     Spacer()
@@ -238,8 +239,8 @@ struct CommunityView: View {
                                 .padding(.bottom, 20)
                                 
                                 HStack {
-                                    Text("Content")
-//                                    Text("\(communityViewModel.posts.posts[index].content)")
+//                                    Text("Content")
+                                    Text("\(communityViewModel.posts.posts[index].content)")
                                         .font(Font.custom("Pretendard Variable", size: 15))
                                         .multilineTextAlignment(.leading)
                                     Spacer()

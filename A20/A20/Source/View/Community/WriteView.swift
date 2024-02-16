@@ -23,6 +23,9 @@ struct WriteView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
     @EnvironmentObject var communityViewModel: CommunityViewModel
     
+    @State private var text: String = ""
+    @State private var texts: String = ""
+    
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -40,6 +43,26 @@ struct WriteView: View {
                       .foregroundColor(.black)
                     Spacer()
                 }
+                
+                HStack(spacing: 10) {
+                    TextField("00", text: $texts)
+                        .font(Font.custom("Pretendard Variable", size: 16))
+                        .lineSpacing(16)
+                        .foregroundColor(.black)
+                    Text("분")
+                        .font(Font.custom("Pretendard Variable", size: 16))
+                        .lineSpacing(16)
+                        .foregroundColor(Color(red: 0.07, green: 0.07, blue: 0.07))
+                }
+                .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
+                .frame(width: 124, height: 40)
+                .background(.white)
+                .cornerRadius(8)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .inset(by: 0.50)
+                        .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
+                )
                 
                 HStack {
                     Text("사진")
@@ -153,35 +176,41 @@ struct WriteView: View {
                 .frame(width: 331)
                 
                 ZStack {
-                    TextField("제목을 입력해주세요", text: $writeTitle)
-                        .frame(width: 331, alignment: .topLeading)
-                            .padding(18)
-                            .background(
-                                Color.textField
-                                    .frame(width: 331, height: 56)
-                                    .cornerRadius(8)
-                            )
-//                    TextField("제목을 입력해주세요", text: $writeTitle)
-//                        .frame(width: 284, height: 18, alignment: .leading)
-//                        .background(
-//                            Color.textField
-//                                .frame(width: 331, height: 56)
-//                                .cornerRadius(8)
-//                        )
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 331, height: 56)
+                        .background(Color(red: 0.97, green: 0.97, blue: 0.98))
+                        .cornerRadius(8)
+                    TextField("제목을 입력해 주세요", text: $writeTitle)
+                        .font(Font.custom("Pretendard", size: 15))
+                        .foregroundColor(.black)
+                        .frame(width: 300)
                 }
-                .padding(.bottom, 25)
+                .padding(.bottom, 10)
+                
+//                ZStack {
+//                    TextField("게시판 내용을 입력해주세요", text: $writeContent)
+//                        .frame(width: 331, alignment: .topLeading)
+//                            .padding(18)
+//                            .background(
+//                                Color.textField
+//                                    .frame(width: 331, height: 241)
+//                                    .cornerRadius(8)
+//                            )
+//                }
                 
                 ZStack {
-                    TextField("게시판 내용을 입력해주세요", text: $writeContent)
-                        .frame(width: 331, alignment: .topLeading)
-                            .padding(18)
-                            .background(
-                                Color.textField
-                                    .frame(width: 331, height: 241)
-                                    .cornerRadius(8)
-                            )
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 331, height: 242)
+                        .background(Color(red: 0.97, green: 0.97, blue: 0.98))
+                        .cornerRadius(8)
+                    TextField("게시물 내용을 입력해 주세요", text: $writeTitle)
+                        .font(Font.custom("Pretendard", size: 15))
+                        .foregroundColor(.black)
+                        .frame(width: 300)
                 }
-                .padding(.top, 50)
+                .padding(.bottom, 25)
                 
             }
             .frame(width: 331)
@@ -208,7 +237,7 @@ struct WriteView: View {
                     }
                 }
                                     } label: {
-                                        Text("저장하기")
+                                        Text("작성하기")
                                           .font(
                                             Font.custom("PretendardVariable", size: 16)
                                               .weight(.bold)

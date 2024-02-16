@@ -15,9 +15,11 @@ struct A20App: App {
 //    @UIApplicationDelegateAdaptor var appDelegate: AppDelegate
     
     // @StateObject var loginViewModel = LoginViewModel() ViewModel들의 @StateObject 변수들을 모두 여기서 한번에 정의하고, 하위 뷰에서 자유롭게 @EnvironmentObject var loginViewModel: LoginViewModel 와 같은 형식으로 정의하여 사용합니다.
-    @StateObject var loginViewModel: LoginViewModel = LoginViewModel(registDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""), loginDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""))
     
-    @State private var isLogin: Bool = false
+    @StateObject var locationManager = LocationManager()
+    
+    @StateObject var loginViewModel: LoginViewModel = LoginViewModel(registDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""), loginDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""))
+    @StateObject var mapViewModel: MapViewModel = MapViewModel(parkingInfoDataString: ParkingInfo(), parkingDetailDataString: ParkingDetail(name: "", lat: "", lon: "", address: "", tel: "", totalQty: "", resQty: "", type: "", baseTime: "", baseRate: "", addTime: "", addRate: "", extraBaseTime: "", extraAddTime: "", extraAddRate: "", weekdayOpenTime: "", weekdayCloseTime: "", operDay: "", id: ""))
     
     init() {
         // Customed NaivagationBar BackgroundColor
@@ -62,8 +64,10 @@ struct A20App: App {
     var body: some Scene {
         WindowGroup {
             ZStack {
-                TabBar(isLogin: $isLogin)
+                TabBar()
+                    .environmentObject(locationManager)
                     .environmentObject(loginViewModel)
+                    .environmentObject(mapViewModel)
             }
         }
     }

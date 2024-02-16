@@ -13,7 +13,7 @@ struct PostElement: Codable {
     var content: String
     var district: String
     var area: String
-    var imageUrl: String? // MARK: String or Int ? (null 값 처리)
+    var imageUrl: String?
     var tag: String
     var userId: String
     var userName: String

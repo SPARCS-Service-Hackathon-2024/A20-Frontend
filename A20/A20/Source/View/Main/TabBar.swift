@@ -8,21 +8,25 @@
 import SwiftUI
 
 struct TabBar: View {
-//    @StateObject var loginViewModel
-    
     @State private var showMainView = false
     
     @State private var selectedTab = 0
     
-    @Binding var isLogin: Bool
+    @State var isLogin: Bool = false
+    
+    @EnvironmentObject var locationManager: LocationManager
     
     @EnvironmentObject var loginViewModel: LoginViewModel
+    @EnvironmentObject var mapViewModel: MapViewModel
     
     var body: some View {
         NavigationView {
             ZStack {
                 TabView(selection: $selectedTab) {
-                    AroundView()
+//                    AroundView(locationManager: $locationManager)
+                    MapView()
+                        .environmentObject(mapViewModel)
+                        .environmentObject(locationManager)
                         .environmentObject(loginViewModel)
                         .tabItem {
                             Label {

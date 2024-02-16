@@ -8,5 +8,5 @@
 import Foundation
 
 struct Posts: Codable {
-    var posts: [PostElement?]
+    var posts: [PostElement]
 }

@@ -117,28 +117,46 @@ struct BuyView: View {
                         HStack {
                             VStack{
                                 ZStack {
-                                    Picker("Select Time", selection: $borrowStartTime) {
-                                        ForEach(0..<25) { hour in
-                                            Text("\(hour)").tag(hour)
-                                        }
-                                    }
-                                    .pickerStyle(.wheel)
-                                    .onChange(of: borrowStartTime) { newHour, _ in
-                                        // Update the displayed text when borrowStartTime changes
-                                        // and store the selected number in borrowStartTime
-                                        // Text view is now used within the ZStack
-                                    }
-                                    .frame(width: 137, height: 40, alignment: .leading)
-                                    .background(Color.white)
-                                    .cornerRadius(8)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .inset(by: 0.50)
-                                            .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
-                                    )
-                                    .foregroundColor(Color.black)
-                                    
-                                    Text(" \(borrowStartTime)")
+//                                    Picker("Select Time", selection: $borrowStartTime) {
+//                                        ForEach(0..<25) { hour in
+//                                            Text("\(hour)").tag(hour)
+//                                        }
+//                                    }
+//                                    .pickerStyle(.wheel)
+//                                    .onChange(of: borrowStartTime) { newHour, _ in
+//                                        // Update the displayed text when borrowStartTime changes
+//                                        // and store the selected number in borrowStartTime
+//                                        // Text view is now used within the ZStack
+//                                    }
+//                                    .frame(width: 137, height: 40, alignment: .leading)
+//                                    .background(Color.white)
+//                                    .cornerRadius(8)
+//                                    .overlay(
+//                                        RoundedRectangle(cornerRadius: 8)
+//                                            .inset(by: 0.50)
+//                                            .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
+//                                    )
+//                                    .foregroundColor(Color.black)
+//                                    
+//                                    Text(" \(borrowStartTime)")
+//                                    Picker("Select a paint color", selection: $borrowStartTime) {
+//                                        ForEach(0..<25, id: \.self) {
+//                                            Text($0)
+//                                        }
+//                                    }
+//                                    .pickerStyle(MenuPickerStyle())
+//                                    .background(Color.white)  // Set white background
+//                                    .border(Color.black, width: 1)  // Set black border
+//                                    .frame(width: 137, height: 40)  // Set frame size
+//                                    .overlay(
+//                                        Image(systemName: "chevron.down")
+//                                            .foregroundColor(.black)
+//                                            .padding(.trailing, 8)  // Adjust the padding as needed
+//                                            .frame(alignment: .trailing)
+//                                    )
+
+//                                    Text("Selected Color: \(selection)")
+//                                        .padding()
                                 }
                             }
                                     
@@ -156,10 +174,10 @@ struct BuyView: View {
                                     }
                                 }
                                 .pickerStyle(MenuPickerStyle())
-                                .onChange(of: borrowEndTime) { newValue in
-                                    // Update the Text view when borrowEndTime changes
-                                    Text(" \(newValue)").padding()
-                                }
+//                                .onChange(of: borrowEndTime) { newValue in
+//                                    // Update the Text view when borrowEndTime changes
+//                                    Text("\(newValue)").padding()
+//                                }
                                 .frame(width: 137, height: 40, alignment: .leading)
                                 .background(Color.white)
                                 .cornerRadius(8)

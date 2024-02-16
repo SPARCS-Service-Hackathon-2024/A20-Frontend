@@ -27,32 +27,49 @@ struct ChatView: View {
                     .padding(.top, 25)
                 LazyVStack {
                     ForEach(chatList.indices, id: \.self) { index in
-                            HStack {
-                                Spacer()
-                                VStack(alignment: .trailing, spacing: 0) {
-                                    Text(chatList[index].question)
-                                      .font(Font.custom("PretendardVariable", size: 14))
-                                      .foregroundColor(.white)
-                                      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center /*.trailing*/)
-                                }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 12)
-                                .background(Color.mainColor)
-                                .cornerRadius(16)
+                        HStack {
+                            Spacer()
+                            ZStack {
+                                Text(chatList[index].question)
+                                    .foregroundColor(.white)
+                                    .font(Font.custom("PretendardVariable", size: 14))
+                            }
+                            .padding()
+                            .background(Color.mainColor)
+                            .cornerRadius(16)
+//                                VStack(alignment: .trailing, spacing: 0) {
+//                                    Text(chatList[index].question)
+//                                      .font(Font.custom("PretendardVariable", size: 14))
+//                                      .foregroundColor(.white)
+//                                      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center /*.trailing*/)
+//                                }
+//                                .padding(.horizontal, 16)
+//                                .padding(.vertical, 12)
+//                                .background(Color.mainColor)
+//                                .cornerRadius(16)
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.9 , height: UIScreen.main.bounds.height * 0.075)
-                            .padding(20)
+                            .padding(15)
+                        
                             HStack {
-                                VStack(alignment: .trailing, spacing: 0) {
+                                ZStack {
                                     Text(chatList[index].answer)
                                       .font(Font.custom("PretendardVariable", size: 14))
-                                      .foregroundColor(.white)
-                                      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center /*.trailing*/)
+                                      .foregroundColor(.black)
                                 }
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 12)
+                                .padding()
                                 .background(Color.subColor)
                                 .cornerRadius(16)
+//                                VStack(alignment: .trailing, spacing: 0) {
+//                                    Text(chatList[index].answer)
+//                                      .font(Font.custom("PretendardVariable", size: 14))
+//                                      .foregroundColor(.white)
+//                                      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center /*.trailing*/)
+//                                }
+//                                .padding(.horizontal, 16)
+//                                .padding(.vertical, 12)
+//                                .background(Color.subColor)
+//                                .cornerRadius(16)
                                 Spacer()
                             }
                             .frame(width: UIScreen.main.bounds.width * 0.9 , height: UIScreen.main.bounds.height * 0.075)

@@ -10,9 +10,12 @@ struct TimeView: View {
     @EnvironmentObject var shareViewModel: ShareViewModel
     
     @State private var totalQty: String = ""
-    @State private var operDay: [String] = []
+    @State private var operDay: [String] = [""]
     
     @State private var baseRate: String = ""
+    @State private var bTime: String = ""
+    @State private var baTime: String = ""
+    @State private var basTime: String = ""
     @State private var baseTime: String = ""
     
     @State private var addRate: String = ""
@@ -34,7 +37,7 @@ struct TimeView: View {
                         )
                         .foregroundColor(.black)
                         .frame(width: 331, alignment: .topLeading)
-                        .padding(.top, 42)
+                        .padding(.top, 75)
                         .padding(.bottom, 16)
                     
                     ZStack {
@@ -45,7 +48,7 @@ struct TimeView: View {
                             .cornerRadius(8)
                         TextField("차량 몇 대가 주차 가능한지 작성해 주세요", text: $totalQty)
                             .font(Font.custom("Pretendard", size: 15))
-                            .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
+                            .foregroundColor(.black)
                             .frame(width: 300)
                     }.padding(.bottom, 32)
                     
@@ -58,43 +61,81 @@ struct TimeView: View {
                         .frame(width: 331, alignment: .topLeading)
                         .padding(.bottom, 16)
                     
-//                    ForEach(operDay.indices, id: \.self) { index in
-//                        HStack {
-//                            Picker("Day", selection: $operDay[index]) {
-//                                ForEach(["월", "화", "수", "목", "금", "토", "일"], id: \.self) { day in
-//                                    Text(day).tag(day)
-//                                }
-//                            }
-//                            .pickerStyle(.menu)
-//                            .frame(width: 60)
-//
-//                            Text("~")
-//                                .font(Font.custom("Pretendard Variable", size: 20))
-//                                .foregroundColor(.black)
-//
-//                            TextField("Start Time", text: $openTime)
-//                                .font(Font.custom("Pretendard", size: 15))
-//                                .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
-//                                .frame(width: 80)
-//
-//                            Text("시")
-//                                .font(Font.custom("Pretendard Variable", size: 20))
-//                                .foregroundColor(.black)
-//
-//                            Spacer()
-//
-//                            Button(action: {
-//                                // Add a new row
-//                                operDay.append("")
-//                            }) {
-//                                Image(systemName: "plus.circle")
-//                                    .resizable()
-//                                    .frame(width: 24, height: 24)
-//                                    .foregroundColor(.blue)
-//                            }
-//                        }
-//                        .padding(.bottom, 16)
-//                    }
+                    ForEach(operDay.indices, id: \.self) { index in
+                        HStack {
+                            HStack(spacing: 10) {
+                                TextField("00", text: $baseTime)
+                                    .font(Font.custom("Pretendard Variable", size: 16))
+                                    .lineSpacing(16)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
+                            .frame(width: 42, height: 48)
+                            .background(.white)
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .inset(by: 0.50)
+                                    .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
+                            )
+
+                            Text("~")
+                                .font(Font.custom("Pretendard Variable", size: 20))
+                                .foregroundColor(.black)
+
+                            
+                            HStack(spacing: 10) {
+                                TextField("00", text: $basTime)
+                                    .font(Font.custom("Pretendard Variable", size: 16))
+                                    .lineSpacing(16)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
+                            .frame(width: 42, height: 48)
+                            .background(.white)
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .inset(by: 0.50)
+                                    .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
+                            )
+                            
+                            HStack(spacing: 10) {
+                                TextField("00", text: $baTime)
+                                    .font(Font.custom("Pretendard Variable", size: 16))
+                                    .lineSpacing(16)
+                                    .foregroundColor(.black)
+                            }
+                            .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
+                            .frame(width: 127, height: 48)
+                            .background(.white)
+                            .cornerRadius(8)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .inset(by: 0.50)
+                                    .stroke(Color(red: 0.69, green: 0.69, blue: 0.69), lineWidth: 0.50)
+                            )
+                            .padding(.leading, 14)
+
+                            Text("시")
+                                .font(Font.custom("Pretendard Variable", size: 20))
+                                .foregroundColor(.black)
+
+                            Spacer()
+
+                            Button(action: {
+                                // Add a new row
+                                operDay.append("")
+                            }) {
+                                Image("Btn")
+                                    .resizable()
+                                    .frame(width: 24, height: 24)
+                                    .foregroundColor(.blue)
+                            }
+                        }
+                        .frame(width: 331, height: 50)
+                        .padding(.bottom, 16)
+                    }
                     
                     VStack(alignment: .leading, spacing: 16) {
                         Text("기본 요금")
@@ -106,10 +147,10 @@ struct TimeView: View {
                                 HStack(spacing: 6) {
                                     HStack(spacing: 4) {
                                         HStack(spacing: 10) {
-                                            TextField("00", text: $baseTime)
+                                            TextField("00", text: $bTime)
                                                 .font(Font.custom("Pretendard Variable", size: 16))
                                                 .lineSpacing(16)
-                                                .foregroundColor(Color(red: 0.67, green: 0.67, blue: 0.67))
+                                                .foregroundColor(.black)
                                             Text("분")
                                                 .font(Font.custom("Pretendard Variable", size: 16))
                                                 .lineSpacing(16)
@@ -138,7 +179,7 @@ struct TimeView: View {
                                             TextField("00", text: $baseRate)
                                                 .font(Font.custom("Pretendard Variable", size: 16))
                                                 .lineSpacing(16)
-                                                .foregroundColor(Color(red: 0.67, green: 0.67, blue: 0.67))
+                                                .foregroundColor(.black)
                                         }
                                         .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
                                         .frame(width: 124, height: 40)
@@ -174,7 +215,7 @@ struct TimeView: View {
                                             TextField("00", text: $addTime)
                                                 .font(Font.custom("Pretendard Variable", size: 16))
                                                 .lineSpacing(16)
-                                                .foregroundColor(Color(red: 0.67, green: 0.67, blue: 0.67))
+                                                .foregroundColor(Color.black)
                                             Text("분")
                                                 .font(Font.custom("Pretendard Variable", size: 16))
                                                 .lineSpacing(16)
@@ -203,7 +244,7 @@ struct TimeView: View {
                                             TextField("00", text: $addRate)
                                                 .font(Font.custom("Pretendard Variable", size: 16))
                                                 .lineSpacing(16)
-                                                .foregroundColor(Color(red: 0.67, green: 0.67, blue: 0.67))
+                                                .foregroundColor(.black)
                                         }
                                         .padding(EdgeInsets(top: 16, leading: 10, bottom: 16, trailing: 10))
                                         .frame(width: 124, height: 40)
@@ -241,7 +282,7 @@ struct TimeView: View {
                             Rectangle()
                                 .foregroundColor(.clear)
                                 .frame(width: 331, height: 56)
-                                .background(!totalQty.isEmpty && !baseRate.isEmpty && !baseTime.isEmpty && !addTime.isEmpty && !addRate.isEmpty && !operDay.isEmpty ? Color(red: 0.34, green: 0.37, blue: 0.98) : Color.lightGray)
+                                .background(!baseRate.isEmpty && !baseTime.isEmpty && !addTime.isEmpty && !addRate.isEmpty ? Color(red: 0.34, green: 0.37, blue: 0.98) : Color.lightGray)
                                 .cornerRadius(8)
                             Text("등록하기")
                               .font(
@@ -270,6 +311,9 @@ struct TimeView: View {
                     )
             }
         }
+//        .navigationDestination(isPresented: $registerParkingLot) {
+//            TabBar()
+//        }
     }
 }
 
