@@ -37,47 +37,44 @@ struct MapView: View {
     var body: some View {
         NavigationStack {
             Map(coordinateRegion: .constant(createRegion()), showsUserLocation: true, annotationItems: parkingData) { parkingInfo in
-                MapAnnotation(coordinate: locationManager.userLocation ?? "") {
-                    
+                MapAnnotation(coordinate: parkingInfo.coordinate) {
+                    Button {
+                        mapViewModel.ids = parkingInfo.id
+                        Task {
+                            do {
+                                try await mapViewModel.fetchParkingDetail()
+                            } catch {
+                                print("Error fetching parking information: \(error)")
+                            }
+                        }
+                        click = true
+                    } label: {
+                        if parkingInfo.isShared {
+                            ZStack {
+                                Image("Union")
+                                ZStack {
+                                    HStack {
+                                        ZStack {
+                                            Circle()
+                                                .frame(width: 31, height: 31)
+                                                .foregroundColor(Color(red: 0.06, green: 0, blue: 0.42))
+                                            Text("공유")
+                                                .font(Font.custom("PretendardVariable", size: 12))
+                                                .foregroundColor(.white)
+                                        }
+                                        Spacer()
+                                    }
+                                }
+                                .padding(.bottom, 7.5)
+                                .padding(.leading, 5)
+                            }
+                            .frame(width: 81, height: 81)
+                        } else {
+                            Image("Pin")
+                                .frame(width: 33, height: 42)
+                        }
+                    }
                 }
-//                MapAnnotation(coordinate: parkingInfo.coordinate) {
-//                    Button {
-//                        mapViewModel.ids = parkingInfo.id
-//                        Task {
-//                            do {
-//                                try await mapViewModel.fetchParkingDetail()
-//                            } catch {
-//                                print("Error fetching parking information: \(error)")
-//                            }
-//                        }
-//                        click = true
-//                    } label: {
-//                        if parkingInfo.isShared {
-//                            ZStack {
-//                                Image("Union")
-//                                ZStack {
-//                                    HStack {
-//                                        ZStack {
-//                                            Circle()
-//                                                .frame(width: 31, height: 31)
-//                                                .foregroundColor(Color(red: 0.06, green: 0, blue: 0.42))
-//                                            Text("공유")
-//                                                .font(Font.custom("PretendardVariable", size: 12))
-//                                                .foregroundColor(.white)
-//                                        }
-//                                        Spacer()
-//                                    }
-//                                }
-//                                .padding(.bottom, 7.5)
-//                                .padding(.leading, 5)
-//                            }
-//                            .frame(width: 81, height: 81)
-//                        } else {
-//                            Image("Pin")
-//                                .frame(width: 33, height: 42)
-//                        }
-//                    }
-//                }
             }
             .sheet(isPresented: $click, content: {
                 SelectView()
