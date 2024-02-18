@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct WriteView: View {
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    @EnvironmentObject var communityViewModel: CommunityViewModel
+    @State private var tag: Bool = false
+    
     @State private var writeContent: String = ""
     @State private var writeTitle: String = ""
-    @State private var tag: Bool = false
-//    @State private var nine:
-//    @State private var dong:
+    
+    //    @State private var nine:
+    //    @State private var dong:
     
     @State private var showImageSheet: Bool = false
     @State private var image = UIImage()
@@ -20,12 +24,8 @@ struct WriteView: View {
     @State private var selectedImages: [UIImage] = []
     @State private var isImagePickerPresented: Bool = false
     
-    @EnvironmentObject var loginViewModel: LoginViewModel
-    @EnvironmentObject var communityViewModel: CommunityViewModel
-    
     @State private var text: String = ""
     @State private var texts: String = ""
-    
     
     init() {
         UITextView.appearance().backgroundColor = .clear
@@ -36,18 +36,18 @@ struct WriteView: View {
             VStack(spacing: 20) {
                 HStack {
                     Text("신고 목적")
-                      .font(
-                        Font.custom("PretendardVariable", size: 16)
-                          .weight(.medium)
-                      )
-                      .foregroundColor(.black)
+                        .font(
+                            Font.custom("PretendardVariable", size: 16)
+                                .weight(.medium)
+                        )
+                        .foregroundColor(.black)
                     Spacer()
                 }
                 
                 HStack {
                     HStack(spacing: 10) {
                         TextField("신고 / 피드백", text: $texts)
-                            .font(Font.custom("Pretendard Variable", size: 16))
+                            .font(Font.custom("PretendardVariable", size: 16))
                             .lineSpacing(16)
                             .foregroundColor(.black)
                     }
@@ -63,7 +63,7 @@ struct WriteView: View {
                     
                     HStack(spacing: 10) {
                         TextField("구", text: $texts)
-                            .font(Font.custom("Pretendard Variable", size: 16))
+                            .font(Font.custom("PretendardVariable", size: 16))
                             .lineSpacing(16)
                             .foregroundColor(.black)
                     }
@@ -79,7 +79,7 @@ struct WriteView: View {
                     
                     HStack(spacing: 10) {
                         TextField("동", text: $texts)
-                            .font(Font.custom("Pretendard Variable", size: 16))
+                            .font(Font.custom("PretendardVariable", size: 16))
                             .lineSpacing(16)
                             .foregroundColor(.black)
                     }
@@ -96,21 +96,21 @@ struct WriteView: View {
                 
                 HStack {
                     Text("사진")
-                      .font(
-                        Font.custom("PretendardVariable", size: 16)
-                          .weight(.medium)
-                      )
-                      .foregroundColor(.black)
+                        .font(
+                            Font.custom("PretendardVariable", size: 16)
+                                .weight(.medium)
+                        )
+                        .foregroundColor(.black)
                     Spacer()
                 }
                 .frame(width: 331)
                 
                 ZStack {
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 331, height: 80)
-                            .background(Color(red: 0.92, green: 0.92, blue: 0.92))
-                            .cornerRadius(8)
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 331, height: 80)
+                        .background(Color(red: 0.92, green: 0.92, blue: 0.92))
+                        .cornerRadius(8)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
                             Button {
@@ -154,14 +154,14 @@ struct WriteView: View {
                                         Spacer()
                                     }
                                     .frame(width: 58, height: 58)
-                                        
+                                    
                                 }
                             }
                         }
                     }
-                    
+//                    
 //                    Spacer()
-                    
+//                    
 //                    HStack {
 //                        Button {
 //                            showImageSheet = true
@@ -175,32 +175,33 @@ struct WriteView: View {
 //                            }
 //                            .padding(10)
 //                        }
-//                            VStack(alignment: .leading, spacing: 10) {
-//                                Text("TIP")
-//                                    .font(
-//                                        Font.custom("Pretendard Variable", size: 14)
-//                                            .weight(.medium)
-//                                    )
-//                                    .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
-//                                Text("최대 10장까지 첨부가 가능해요!")
-//                                    .font(
-//                                        Font.custom("Pretendard Variable", size: 12)
-//                                            .weight(.medium)
-//                                    )
-//                                    .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
-//                            }
-//                            Spacer()
-//
+//                        
+//                        VStack(alignment: .leading, spacing: 10) {
+//                            Text("TIP")
+//                                .font(
+//                                    Font.custom("Pretendard Variable", size: 14)
+//                                        .weight(.medium)
+//                                )
+//                                .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
+//                            Text("최대 10장까지 첨부가 가능해요!")
+//                                .font(
+//                                    Font.custom("Pretendard Variable", size: 12)
+//                                        .weight(.medium)
+//                                )
+//                                .foregroundColor(Color(red: 0.5, green: 0.5, blue: 0.5))
+//                        }
+//                        
+//                        Spacer()
 //                    }
                 }
                 
                 HStack {
                     Text("게시물 작성")
-                      .font(
-                        Font.custom("PretendardVariable", size: 16)
-                          .weight(.medium)
-                      )
-                      .foregroundColor(.black)
+                        .font(
+                            Font.custom("PretendardVariable", size: 16)
+                                .weight(.medium)
+                        )
+                        .foregroundColor(.black)
                     Spacer()
                 }
                 .frame(width: 331)
@@ -221,12 +222,12 @@ struct WriteView: View {
 //                ZStack {
 //                    TextField("게시판 내용을 입력해주세요", text: $writeContent)
 //                        .frame(width: 331, alignment: .topLeading)
-//                            .padding(18)
-//                            .background(
-//                                Color.textField
-//                                    .frame(width: 331, height: 241)
-//                                    .cornerRadius(8)
-//                            )
+//                        .padding(18)
+//                        .background(
+//                            Color.textField
+//                                .frame(width: 331, height: 241)
+//                                .cornerRadius(8)
+//                        )
 //                }
                 
                 ZStack {
@@ -244,10 +245,6 @@ struct WriteView: View {
                 
             }
             .frame(width: 331)
-//            .sheet(isPresented: $showImageSheet) {
-//                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
-//            }
-            //            .toolbarBackground(Color.white, for: .navigationBar)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton(), trailing:
                                     Button {
@@ -266,14 +263,14 @@ struct WriteView: View {
                         print("Error fetching data: \(error)")
                     }
                 }
-                                    } label: {
-                                        Text("작성하기")
-                                          .font(
-                                            Font.custom("PretendardVariable", size: 16)
-                                              .weight(.bold)
-                                          )
-                                          .foregroundColor(Color(red: 0.12, green: 0.14, blue: 0.17))
-                                    })
+            } label: {
+                Text("작성하기")
+                    .font(
+                        Font.custom("PretendardVariable", size: 16)
+                            .weight(.bold)
+                    )
+                    .foregroundColor(Color(red: 0.12, green: 0.14, blue: 0.17))
+            })
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -286,7 +283,7 @@ struct WriteView: View {
             }
         }
     }
-        
+    
 }
 
 #Preview {

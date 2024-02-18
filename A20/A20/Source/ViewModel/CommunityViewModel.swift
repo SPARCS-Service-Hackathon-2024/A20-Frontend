@@ -16,7 +16,7 @@ class CommunityViewModel: ObservableObject {
     @Published var writePost: WritePost
     
     @Published var communityDistrict: String = "" // 구
-    @Published var communityTag: String = "Report" // Report / FeedBack
+    @Published var communityTag: String = "Report" // Report or FeedBack
     @Published var postId: String = ""
     
     @Published var id: String = ""

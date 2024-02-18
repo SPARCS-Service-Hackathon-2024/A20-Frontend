@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InfoView: View {
-//    @EnvironmentObject var shareViewModel: ShareViewModel
+    @EnvironmentObject var shareViewModel: ShareViewModel
     
     @State var selectedOption: Int = 0
     
@@ -20,7 +20,7 @@ struct InfoView: View {
     @State private var moveToNextPage: Bool = false
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView(showsIndicators: false) {
                 VStack {
                     VStack {
@@ -56,6 +56,7 @@ struct InfoView: View {
                                 .font(Font.custom("PretendardVariable", size: 15))
                                 .foregroundColor(Color(red: 0.51, green: 0.57, blue: 0.63))
                                 .frame(width: 300)
+                                .keyboardType(.numberPad)
                         }.padding(.bottom, 32)
                         
                         ZStack {
@@ -174,26 +175,24 @@ struct InfoView: View {
                                 .foregroundColor(.white)
                         }
                     }
-                    .padding(.top, 32)
-                    .padding(.bottom, 200)
+                    .padding(.bottom, 100)
                 }
                 
             }
             .edgesIgnoringSafeArea(.bottom)
         }
-        .toolbarBackground(Color.white, for: .navigationBar)
-                  .navigationBarBackButtonHidden(true)
-                  .navigationBarItems(leading: BackButton())
-                  .navigationBarTitleDisplayMode(.inline)
-                  .toolbar {
-                      ToolbarItem(placement: .principal) {
-                          Text("내 주차장 공유하기")
-                              .font(
-                                  Font.custom("PretendardVariable", size: 16)
-                                      .weight(.bold)
-                              )
-                      }
-                  }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: BackButton())
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("내 주차장 공유하기")
+                    .font(
+                        Font.custom("PretendardVariable", size: 16)
+                            .weight(.bold)
+                    )
+            }
+        }
         .navigationDestination(isPresented: $moveToNextPage, destination: {
             TimeView()
 //                .environmentObject(shareViewModel)

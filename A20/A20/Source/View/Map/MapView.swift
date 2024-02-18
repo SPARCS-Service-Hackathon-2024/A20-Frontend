@@ -163,6 +163,9 @@ struct MapView: View {
                 }
                 print(locationManager.userLocation ?? "")
             }
+            .sheet(isPresented: $click) {
+                ParkingDetailView()
+            }
         }
     }
 

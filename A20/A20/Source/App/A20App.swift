@@ -9,13 +9,7 @@ import SwiftUI
 
 @main
 struct A20App: App {
-    
-//    @State
-    
-//    @UIApplicationDelegateAdaptor var appDelegate: AppDelegate
-    
-    // @StateObject var loginViewModel = LoginViewModel() ViewModel들의 @StateObject 변수들을 모두 여기서 한번에 정의하고, 하위 뷰에서 자유롭게 @EnvironmentObject var loginViewModel: LoginViewModel 와 같은 형식으로 정의하여 사용합니다.
-    
+    // ViewModel들의 @StateObject 변수들을 모두 여기서 한번에 정의하고, 하위 뷰에서 자유롭게 @EnvironmentObject var loginViewModel: LoginViewModel 와 같은 형식으로 정의하며, View에는 .environmentObject(LoginView) 와 같이 뷰모델 객체를 주입합니다.
     @StateObject var locationManager = LocationManager()
     
     @StateObject var loginViewModel: LoginViewModel = LoginViewModel(registDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""), loginDataString: LoginResponse(user: User(name: "", email: "", password: "", id: ""), token: ""))
@@ -56,7 +50,7 @@ struct A20App: App {
         // Standard Appearance
         UITabBar.appearance().standardAppearance = appearanceOfTabBar
         
-        // MARK: Page Tab View PageControl appearance Settings!
+        // Page Tab View PageControl appearance
 //        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.main
 //        UIPageControl.appearance().pageIndicatorTintColor = UIColor.grey
     }

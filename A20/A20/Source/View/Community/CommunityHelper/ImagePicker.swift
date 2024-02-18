@@ -11,14 +11,14 @@ import PhotosUI
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImages: [UIImage]
     @Binding var isImagePickerPresented: Bool
-
+    
     class Coordinator: NSObject, PHPickerViewControllerDelegate {
         var parent: ImagePicker
-
+        
         init(parent: ImagePicker) {
             self.parent = parent
         }
-
+        
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             for result in results {
                 result.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
@@ -32,11 +32,11 @@ struct ImagePicker: UIViewControllerRepresentable {
             parent.isImagePickerPresented = false
         }
     }
-
+    
     func makeCoordinator() -> Coordinator {
         return Coordinator(parent: self)
     }
-
+    
     func makeUIViewController(context: Context) -> PHPickerViewController {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
@@ -44,8 +44,9 @@ struct ImagePicker: UIViewControllerRepresentable {
         picker.delegate = context.coordinator
         return picker
     }
-
+    
     func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
+        
     }
     
     func requestPhotoLibraryPermission() {

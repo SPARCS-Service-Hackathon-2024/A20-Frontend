@@ -17,7 +17,6 @@ struct User: Codable {
     var email: String
     var password: String
     
-    // MARK: String or Int ? (null 값 처리)
     var carType: String?
     var carNumber: String?
     

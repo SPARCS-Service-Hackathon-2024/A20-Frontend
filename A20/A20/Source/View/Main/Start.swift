@@ -28,8 +28,7 @@ struct Start: View {
                     
                     Text("다대슈")
                         .font(
-                            Font.custom("Pretendard-Bold", size: 48)
-                                .weight(.heavy)
+                            Font.customFont(name: "PretendardVariable", size: 48, weight: .heavy)
                         )
                         .foregroundColor(Color(red: 0.34, green: 0.37, blue: 0.98))
                     

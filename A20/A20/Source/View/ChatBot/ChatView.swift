@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ChatView: View {
+    @StateObject var chatViewModel: ChatViewModel = ChatViewModel(chatDataString: ChatResponse(answer: ""))
+    
     @State private var question: String = ""
-    // MARK: .linelimit / max 50자
+
     @State var chatList: [chatItem] = [
+        // .linelimit / max 50자
         chatItem(question: "질문을 입력해주세요!.", answer: "제가 답변해드릴게요!"),
     ]
-    
-    @StateObject var chatViewModel: ChatViewModel = ChatViewModel(chatDataString: ChatResponse(answer: ""))
     
     var body: some View {
         NavigationStack {
@@ -37,42 +38,42 @@ struct ChatView: View {
                             .padding()
                             .background(Color.mainColor)
                             .cornerRadius(16)
-//                                VStack(alignment: .trailing, spacing: 0) {
-//                                    Text(chatList[index].question)
-//                                      .font(Font.custom("PretendardVariable", size: 14))
-//                                      .foregroundColor(.white)
-//                                      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center /*.trailing*/)
-//                                }
-//                                .padding(.horizontal, 16)
-//                                .padding(.vertical, 12)
-//                                .background(Color.mainColor)
-//                                .cornerRadius(16)
-                            }
-                            .frame(width: UIScreen.main.bounds.width * 0.9 , height: UIScreen.main.bounds.height * 0.075)
-                            .padding(15)
+//                            VStack(alignment: .trailing, spacing: 0) {
+//                                Text(chatList[index].question)
+//                                    .font(Font.custom("PretendardVariable", size: 14))
+//                                    .foregroundColor(.white)
+//                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center /*.trailing*/)
+//                            }
+//                            .padding(.horizontal, 16)
+//                            .padding(.vertical, 12)
+//                            .background(Color.mainColor)
+//                            .cornerRadius(16)
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 , height: UIScreen.main.bounds.height * 0.075)
+                        .padding(15)
                         
-                            HStack {
-                                ZStack {
-                                    Text(chatList[index].answer)
-                                      .font(Font.custom("PretendardVariable", size: 14))
-                                      .foregroundColor(.black)
-                                }
-                                .padding()
-                                .background(Color.subColor)
-                                .cornerRadius(16)
-//                                VStack(alignment: .trailing, spacing: 0) {
-//                                    Text(chatList[index].answer)
-//                                      .font(Font.custom("PretendardVariable", size: 14))
-//                                      .foregroundColor(.white)
-//                                      .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center /*.trailing*/)
-//                                }
-//                                .padding(.horizontal, 16)
-//                                .padding(.vertical, 12)
-//                                .background(Color.subColor)
-//                                .cornerRadius(16)
-                                Spacer()
+                        HStack {
+                            ZStack {
+                                Text(chatList[index].answer)
+                                    .font(Font.custom("PretendardVariable", size: 14))
+                                    .foregroundColor(.black)
                             }
-                            .frame(width: UIScreen.main.bounds.width * 0.9 , height: UIScreen.main.bounds.height * 0.075)
+                            .padding()
+                            .background(Color.subColor)
+                            .cornerRadius(16)
+//                            VStack(alignment: .trailing, spacing: 0) {
+//                                Text(chatList[index].answer)
+//                                    .font(Font.custom("PretendardVariable", size: 14))
+//                                    .foregroundColor(.white)
+//                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center /*.trailing*/)
+//                            }
+//                            .padding(.horizontal, 16)
+//                            .padding(.vertical, 12)
+//                            .background(Color.subColor)
+//                            .cornerRadius(16)
+                            Spacer()
+                        }
+                        .frame(width: UIScreen.main.bounds.width * 0.9 , height: UIScreen.main.bounds.height * 0.075)
                     }
                 }
             }
@@ -116,12 +117,9 @@ struct ChatView: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 14)
                 .frame(width: UIScreen.main.bounds.width * 0.9 /*342*/, height: 52, alignment: .center)
-                .background(Color.Gray) // MARK: Color?
+                .background(Color.Gray)
                 .cornerRadius(30)
             }
-//            .toolbarBackground(Color.white, for: .navigationBar)
-//            .navigationBarBackButtonHidden(true)
-//            .navigationBarItems(leading: BackButton())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {

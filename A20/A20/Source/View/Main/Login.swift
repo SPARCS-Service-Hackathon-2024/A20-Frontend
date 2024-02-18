@@ -92,22 +92,22 @@ struct Login: View {
                 .padding(.bottom, 225)
                 
                 Text("회원이 아니신가요?")
-                  .font(Font.custom("PretendardVariable", size: 15))
-                  .kerning(0.15)
-                  .multilineTextAlignment(.center)
-                  .foregroundColor(.black)
+                    .font(Font.custom("PretendardVariable", size: 15))
+                    .kerning(0.15)
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.black)
                 
                 Button {
                     needRegist = true
                 } label: {
                     Text("1분만에 회원가입하기")
-                      .font(
-                        Font.custom("Pretendard", size: 15)
-                          .weight(.semibold)
-                      )
-                      .kerning(0.15)
-                      .multilineTextAlignment(.center)
-                      .foregroundColor(.black)
+                        .font(
+                            Font.custom("Pretendard", size: 15)
+                                .weight(.semibold)
+                        )
+                        .kerning(0.15)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.black)
                 }
             }
         }
@@ -119,7 +119,7 @@ struct Login: View {
             OnBoarding(isLogin: $isLogin)
                 .environmentObject(loginViewModel)
         })
-//        .toolbarBackground(Color.white, for: .navigationBar)
+        //        .toolbarBackground(Color.white, for: .navigationBar)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton())
     }

@@ -13,7 +13,6 @@ struct ShareView: View {
             VStack {
                 
             }
-//            .toolbarBackground(Color.white, for: .navigationBar)
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: BackButton())
             .navigationBarTitleDisplayMode(.inline)

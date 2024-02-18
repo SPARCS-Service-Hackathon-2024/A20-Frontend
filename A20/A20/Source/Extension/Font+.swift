@@ -8,11 +8,19 @@
 import SwiftUI
 
 extension Font {
-    static func customFont(name: String, size: CGFloat) -> Font {
-        guard let customFont = UIFont(name: name, size: size) else {
-            return Font.system(size: size)
+    static func customFont(name: String, size: CGFloat, weight: Font.Weight = .regular) -> Font {
+        guard let uiFont = UIFont(name: name, size: size) else {
+            return Font.system(size: size, weight: weight)
         }
-        let font = UIFontMetrics(forTextStyle: .body).scaledFont(for: customFont)
-        return Font(font)
+        let fontMetrics = UIFontMetrics(forTextStyle: .body)
+        let scaledUIFont = fontMetrics.scaledFont(for: uiFont)
+        
+        return Font(scaledUIFont).weight(weight)
     }
 }
+
+// CALL
+// ex. 다대슈
+//.font(
+//    Font.customFont(name: "PretendardVariable", size: 48, weight: .heavy)
+//)

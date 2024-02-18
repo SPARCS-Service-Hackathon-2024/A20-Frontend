@@ -23,7 +23,7 @@ class ShareViewModel: ObservableObject {
     var userId: String = ""
     var id: String = ""
     
-    var receiveURLString: String = "https://test.hackathon.sparcs.net/share/lend/all/:userId" // "https://test.hackathon.sparcs.net/share/lend/:id" // "http://test.hackathon.sparcs.net/share/borrow/allbyuser/:userId" // http://test.hackathon.sparcs.net/share/borrow/allbylendid/:id // http://{SERVER_URL}/share/borrow/:id
+    var receiveURLString: String = "" // https://test.hackathon.sparcs.net/share/lend/all/:userId // https://test.hackathon.sparcs.net/share/lend/:id // http://test.hackathon.sparcs.net/share/borrow/allbyuser/:userId // http://test.hackathon.sparcs.net/share/borrow/allbylendid/:id // https://test.hackathon.sparcs.net/share/borrow/:id
     
     init(lendDataString: Status, lendAllIdDataString: ReceiveUserShare, parkingIdDataString: ReceiveUserShareElement, shareRequestDataString: Status, receiveAllDataString: RecieveAll, borrowIdDataString: RecieveAllElement) {
         self.lend = lendDataString

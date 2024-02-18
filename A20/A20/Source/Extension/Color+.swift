@@ -35,7 +35,3 @@ extension Color {
     static let text = Color(hex: "#bfbfc3")
     static let textField = Color(hex: "#f7f8f9")
 }
-
-//extension UIColor {
-//    static let mainColor = UIColor(named: "main")
-//}

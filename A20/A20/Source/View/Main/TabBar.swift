@@ -23,7 +23,6 @@ struct TabBar: View {
         NavigationView {
             ZStack {
                 TabView(selection: $selectedTab) {
-//                    AroundView(locationManager: $locationManager)
                     MapView()
                         .environmentObject(mapViewModel)
                         .environmentObject(locationManager)
@@ -126,15 +125,6 @@ struct TabBar: View {
                 }
             }
             
-        }
-    }
-}
-
-extension TabBar {
-    var splash: some View {
-        ZStack {
-            Color.white.ignoresSafeArea()
-            Image("Logo")
         }
     }
 }

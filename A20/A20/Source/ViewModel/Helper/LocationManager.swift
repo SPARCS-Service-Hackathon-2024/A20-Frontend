@@ -20,8 +20,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
-        // 위치 업데이트 간격을 설정하려면 아래 라인을 추가할 수 있습니다.
-        // locationManager.distanceFilter = 10 // 10 미터 이상 이동시에 업데이트
+        // locationManager.distanceFilter = 10
     }
 
     func requestLocationPermission() {
@@ -38,19 +37,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         }
     }
     
-    // 현재 위치의 위도를 문자열로 반환
-        func getCurrentLatitudeString() -> String? {
-            guard let latitude = userLocation?.latitude else {
-                return nil
-            }
-            return String(format: "%.6f", latitude)
+    func getCurrentLatitudeString() -> String? {
+        guard let latitude = userLocation?.latitude else {
+            return nil
         }
-
-        // 현재 위치의 경도를 문자열로 반환
-        func getCurrentLongitudeString() -> String? {
-            guard let longitude = userLocation?.longitude else {
-                return nil
-            }
-            return String(format: "%.6f", longitude)
+        return String(format: "%.6f", latitude)
+    }
+    
+    func getCurrentLongitudeString() -> String? {
+        guard let longitude = userLocation?.longitude else {
+            return nil
         }
+        return String(format: "%.6f", longitude)
+    }
 }

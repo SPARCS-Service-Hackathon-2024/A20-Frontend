@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CommunityView: View {
+    @StateObject var communityViewModel: CommunityViewModel = CommunityViewModel(postDataString: Posts(posts: [PostElement(id: "", title: "", content: "", district: "", area: "", imageUrl: "", tag: "", userId: "", userName: "")]), writeDataString: WritePost(newPost: PostElement(id: "", title: "", content: "", district: "", area: "", imageUrl: "", tag: "", userId: "", userName: "")))
+    
     @State private var index = 0
     
     @State private var searchText: String = ""
-    
-    @StateObject var communityViewModel: CommunityViewModel = CommunityViewModel(postDataString: Posts(posts: [PostElement(id: "", title: "", content: "", district: "", area: "", imageUrl: "", tag: "", userId: "", userName: "")]), writeDataString: WritePost(newPost: PostElement(id: "", title: "", content: "", district: "", area: "", imageUrl: "", tag: "", userId: "", userName: "")))
     
     var body: some View {
         NavigationStack {
@@ -84,7 +84,6 @@ struct CommunityView: View {
                                     Spacer()
                                 }
                                 HStack {
-//                                    Text("제목")
                                     Text("\(communityViewModel.posts.posts[index].title)")
                                         .font(
                                             Font.custom("PretendardVariable", size: 15)
@@ -98,7 +97,6 @@ struct CommunityView: View {
                                 HStack {
                                     Image("Location")
                                         .frame(width: 25, height: 25)
-//                                    Text("대전시 중구")
                                     Text("대전시 \(communityViewModel.posts.posts[index].district) \(communityViewModel.posts.posts[index].area)")
                                         .font(Font.custom("PretendardVariable", size: 14))
                                         .foregroundColor(Color(red: 0.37, green: 0.37, blue: 0.37))
@@ -107,7 +105,6 @@ struct CommunityView: View {
                                 .padding(.bottom, 15)
                                 
                                 HStack {
-//                                    Text("content")
                                     Text("\(communityViewModel.posts.posts[index].content)")
                                         .multilineTextAlignment(.leading)
                                     Spacer()
@@ -180,9 +177,6 @@ struct CommunityView: View {
                     }
                     .padding(.bottom)
                 }
-                //            .toolbarBackground(Color.white, for: .navigationBar)
-                //            .navigationBarBackButtonHidden(true)
-                //            .navigationBarItems(leading: BackButton())
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
@@ -200,31 +194,29 @@ struct CommunityView: View {
                             VStack {
                                 HStack {
                                     ZStack {
-                                       
-    //                                    VStack {
-    //                                        Spacer()
-    //                                        HStack {
-    //                                            Spacer()
-    //                                            ZStack {
-    //                                                Circle()
-    //                                                    .frame(width: 20, height: 20)
-    //                                                    .foregroundColor(Color(red: 1, green: 0.77, blue: 0.16))
-    //                                                Text("5.0")
-    //                                                    .font(
-    //                                                        Font.custom("Pretendard Variable", size: 8.56)
-    //                                                            .weight(.semibold)
-    //                                                    )
-    //                                                    .multilineTextAlignment(.center)
-    //                                                    .foregroundColor(.white)
-    //                                                    .frame(width: 15, height: 15)
-    //                                            }
-    //                                        }
-    //                                    }
-    //                                    .frame(width: 50, height: 50)
+//                                        VStack {
+//                                            Spacer()
+//                                            HStack {
+//                                                Spacer()
+//                                                ZStack {
+//                                                    Circle()
+//                                                        .frame(width: 20, height: 20)
+//                                                        .foregroundColor(Color(red: 1, green: 0.77, blue: 0.16))
+//                                                    Text("5.0")
+//                                                        .font(
+//                                                            Font.custom("PretendardVariable", size: 8.56)
+//                                                                .weight(.semibold)
+//                                                        )
+//                                                        .multilineTextAlignment(.center)
+//                                                        .foregroundColor(.white)
+//                                                        .frame(width: 15, height: 15)
+//                                                }
+//                                            }
+//                                        }
+//                                        .frame(width: 50, height: 50)
                                     }
                                     .padding(.trailing, 20)
                                     VStack(alignment: .leading) {
-//                                        Text("홍길동")
                                         Text("\(communityViewModel.posts.posts[index].userName)")
                                             .font(Font.custom("PretendardVariable", size: 15))
                                     }
@@ -233,9 +225,9 @@ struct CommunityView: View {
                                 .padding(.bottom, 20)
                                 
                                 HStack {
-//                                    Text("Content")
+                                    //                                    Text("Content")
                                     Text("\(communityViewModel.posts.posts[index].content)")
-                                        .font(Font.custom("Pretendard Variable", size: 15))
+                                        .font(Font.custom("PretendardVariable", size: 15))
                                         .multilineTextAlignment(.leading)
                                     Spacer()
                                 }
@@ -323,9 +315,6 @@ struct CommunityView: View {
                     }
                     .padding(.bottom)
                 }
-                //            .toolbarBackground(Color.white, for: .navigationBar)
-                //            .navigationBarBackButtonHidden(true)
-                //            .navigationBarItems(leading: BackButton())
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
